@@ -87,19 +87,31 @@ export default function ContactSection() {
 
           <div className="bg-white/5 border border-white/20 p-10 md:p-12 relative">
             {status === 'success' ? (
-              <div className="absolute inset-0 bg-[var(--mn-navy-deep)] flex flex-col items-center justify-center p-12 text-center animate-fadeIn">
-                <div className="w-16 h-16 bg-[var(--mn-burgundy)] text-white flex items-center justify-center mb-8">
-                  <span className="text-3xl">✓</span>
+              <div className="absolute inset-0 bg-[#1a2744] z-50 flex flex-col items-center justify-center p-12 text-center">
+                {/* Decorative Elements */}
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(#8b1c3f 1px, transparent 1px), linear-gradient(90deg, #8b1c3f 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+                
+                <div className="relative mb-10">
+                  <div className="w-24 h-24 border border-[var(--mn-burgundy)] rounded-full flex items-center justify-center animate-[pulse_3s_infinite]">
+                    <div className="w-16 h-16 bg-[var(--mn-burgundy)] text-white flex items-center justify-center">
+                      <span className="text-3xl">✓</span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-display italic text-2xl text-white mb-4">Inquiry Received</h3>
-                <p className="text-white/60 text-base leading-relaxed mb-10">
-                  Your consultation request has been successfully transmitted to our partners. We will respond via the provided email address within one business day.
+
+                <h3 className="font-display italic text-3xl text-white mb-6 tracking-wide">Inquiry Transmitted</h3>
+                
+                <p className="text-white/60 text-[15px] leading-relaxed mb-12 max-w-[340px] font-medium uppercase tracking-wider">
+                  Our partners have been notified. <br /> expect a response within <br /> 24 business hours.
                 </p>
+
+                <div className="h-[1px] w-24 bg-white/20 mb-12"></div>
+
                 <button 
                   onClick={() => setStatus('idle')}
-                  className="bg-transparent border border-white/30 text-white text-[11px] font-bold uppercase tracking-[2px] px-8 py-3 hover:bg-white hover:text-[var(--mn-navy)] transition-all"
+                  className="bg-transparent border border-white/30 text-white text-[11px] font-bold uppercase tracking-[3px] px-10 py-4 hover:bg-white hover:text-[var(--mn-navy)] transition-all duration-500"
                 >
-                  New Message
+                  New Consultation
                 </button>
               </div>
             ) : null}

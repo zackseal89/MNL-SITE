@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-// Initialize Resend with API Key from environment variables
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
@@ -10,53 +9,78 @@ export async function POST(req: NextRequest) {
     const { fullName, email, matterType, summary, honeypot } = body;
 
     // ── SPAM PROTECTION (Honeypot) ──
-    // If the hidden 'honeypot' field is filled, it's likely a bot
     if (honeypot) {
-      console.warn('Spam detected via honeypot field.');
-      return NextResponse.json({ success: true, message: 'Message "sent" successfully.' }, { status: 200 });
+      return NextResponse.json({ success: true }, { status: 200 });
     }
 
-    // ── VALIDATION ──
     if (!fullName || !email || !matterType || !summary) {
       return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
     }
 
     // ── SEND EMAIL ──
-    // Note: If you haven't verified a domain in Resend, 
-    // you can only send TO the email you signed up with.
     const { data, error } = await resend.emails.send({
-      from: 'MN Legal Web <onboarding@resend.dev>', // Update this after domain verification
-      to: ['info@mnlegal.net'],
-      subject: `New Legal Inquiry: ${matterType} - ${fullName}`,
+      from: 'MN Legal Portal <onboarding@resend.dev>',
+      // NOTE: In Resend Trial Mode, this MUST be the email you used to sign up for Resend.
+      to: ['info@mnlegal.net'], 
+      subject: `CONSULTATION INQUIRY: ${matterType.toUpperCase()} — ${fullName.toUpperCase()}`,
       replyTo: email,
       html: `
-        <div style="font-family: sans-serif; line-height: 1.6; color: #1a2744; max-width: 600px; border: 1px solid #eee; padding: 40px;">
-          <h2 style="border-bottom: 2px solid #8b1c3f; padding-bottom: 10px; font-style: italic;">New Consultation Inquiry</h2>
-          
-          <p><strong>Client Name:</strong> ${fullName}</p>
-          <p><strong>Client Email:</strong> ${email}</p>
-          <p><strong>Legal Matter:</strong> ${matterType}</p>
-          
-          <div style="background: #f5f3ef; padding: 20px; border-left: 4px solid #8b1c3f; margin-top: 20px;">
-            <p style="margin-top: 0; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #8b1c3f;">Summary of Matter</p>
-            <p style="white-space: pre-wrap;">${summary}</p>
-          </div>
-          
-          <p style="font-size: 11px; color: #999; margin-top: 40px;">
-            This inquiry was sent from the MN Legal website contact form.
-          </p>
-        </div>
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <style>
+              body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #333333; line-height: 1.6; margin: 0; padding: 0; background-color: #f5f3ef; }
+              .container { max-width: 600px; margin: 40px auto; background-color: #ffffff; border-top: 6px solid #8b1c3f; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+              .header { background-color: #1a2744; padding: 40px; text-align: center; }
+              .content { padding: 40px; }
+              .footer { background-color: #f9f9f9; padding: 20px; text-align: center; font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 2px; }
+              h1 { font-family: 'Georgia', serif; font-style: italic; color: #ffffff; margin: 0; font-size: 24px; }
+              .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #8b1c3f; margin-bottom: 8px; display: block; }
+              .value { font-size: 16px; color: #1a2744; margin-bottom: 24px; font-weight: 500; }
+              .message-box { background-color: #f5f3ef; padding: 30px; border-left: 2px solid #8b1c3f; margin-top: 30px; }
+              .message-text { font-size: 15px; color: #333333; white-space: pre-wrap; font-style: italic; }
+              .divider { height: 1px; background-color: #eeeeee; margin: 30px 0; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>MN Advocates LLP</h1>
+                <div style="color: rgba(255,255,255,0.4); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-top: 10px;">Consultation Request</div>
+              </div>
+              <div class="content">
+                <span class="label">Prospective Client</span>
+                <div class="value">${fullName}</div>
+                
+                <span class="label">Email Address</span>
+                <div class="value">${email}</div>
+                
+                <span class="label">Legal Area</span>
+                <div class="value">${matterType}</div>
+                
+                <div class="divider"></div>
+                
+                <div class="message-box">
+                  <span class="label">Inquiry Summary</span>
+                  <div class="message-text">"${summary}"</div>
+                </div>
+              </div>
+              <div class="footer">
+                Privileged & Confidential — Generated via MN Legal Portal
+              </div>
+            </div>
+          </body>
+        </html>
       `,
     });
 
     if (error) {
-      console.error('Resend Error:', error);
       return NextResponse.json({ error: 'Failed to send email.' }, { status: 500 });
     }
 
     return NextResponse.json({ success: true, data }, { status: 200 });
   } catch (err) {
-    console.error('API Route Error:', err);
     return NextResponse.json({ error: 'Internal server error.' }, { status: 500 });
   }
 }
