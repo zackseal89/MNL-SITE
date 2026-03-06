@@ -8,28 +8,46 @@ gsap.registerPlugin(ScrollTrigger);
 
 const team = [
   {
-    name: 'M. N. Advocate',
-    title: 'Managing Partner',
+    name: 'Mbula Nzuki',
+    title: 'Managing Partner, Principal Attorney',
     practice: 'Corporate & Commercial Strategy',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=687&auto=format&fit=crop',
+    image: 'https://mnlegal.net/wp-content/uploads/2024/01/Mbula-Nzuki-team.jpg',
   },
   {
-    name: 'Sarah Mwangi',
-    title: 'Senior Partner',
-    practice: 'Litigation & Dispute Resolution',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=688&auto=format&fit=crop',
+    name: 'Sebie Salim',
+    title: 'Chief Operations, Strategy & Growth',
+    practice: 'Operational Excellence',
+    image: 'https://mnlegal.net/wp-content/uploads/2024/01/Sebie-Salim.jpg',
   },
   {
-    name: 'John Doe',
-    title: 'Associate Partner',
-    practice: 'Real Estate & Conveyancing',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1470&auto=format&fit=crop',
+    name: 'Mutundu Chege',
+    title: 'Litigation Department, Co-Head',
+    practice: 'Dispute Resolution',
+    image: 'https://mnlegal.net/wp-content/uploads/2024/01/Mutundu-Chege.jpg',
   },
   {
-    name: 'Jane Smith',
+    name: 'Konstantina Zariou',
+    title: 'Of - Counsel',
+    practice: 'Legal Advisory',
+    image: 'https://mnlegal.net/wp-content/uploads/2026/01/IMG_8790.jpeg',
+  },
+  {
+    name: 'Nour Sheriff',
+    title: 'Legal Research Assistant',
+    practice: 'Legal Research & Analysis',
+    image: 'https://mnlegal.net/wp-content/uploads/2024/01/Nour-Sheriff.jpg',
+  },
+  {
+    name: 'Husna (A.) Mohammed',
     title: 'Senior Associate',
-    practice: 'Banking & Finance Law',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=761&auto=format&fit=crop',
+    practice: 'Corporate Law',
+    image: 'https://mnlegal.net/wp-content/uploads/2026/03/1771405050567.jpg',
+  },
+  {
+    name: 'Zachary Ongeri',
+    title: 'AI & Digital transformation Associate',
+    practice: 'Legal Technology',
+    image: 'https://mnlegal.net/wp-content/uploads/2026/01/1000053692.jpg',
   },
 ];
 
@@ -61,12 +79,12 @@ export default function TeamSection() {
             Our Professionals
           </span>
           <h2 className="text-[clamp(32px,4vw,42px)] font-display text-[var(--mn-navy)] leading-tight inline-block border-b-2 border-[var(--mn-burgundy)] pb-4">
-            Meet the Partners
+            Meet the Team
           </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {team.map((member, i) => (
+          {team.map((member: any, i: number) => (
             <div key={i} className="team-card group bg-white p-4 transition-all duration-500 hover:shadow-xl relative">
               <div className="relative aspect-[4/5] mb-6 overflow-hidden bg-gray-100">
                 <img
