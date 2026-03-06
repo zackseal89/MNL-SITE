@@ -17,7 +17,7 @@ export default async function SearchResultsPage({ searchParams }: SearchPageProp
   const wpPosts = await getAllPosts();
   const allPosts = wpPosts?.map(mapWPPostToPost) || [];
 
-  const results = allPosts.filter(post => 
+  const results = allPosts.filter((post: any) => 
     post.title.toLowerCase().includes(query.toLowerCase()) ||
     post.excerpt.toLowerCase().includes(query.toLowerCase()) ||
     post.content?.toLowerCase().includes(query.toLowerCase())

@@ -32,7 +32,7 @@ export default function TOC() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        entries.forEach((entry: any) => {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id);
           }
@@ -41,7 +41,7 @@ export default function TOC() {
       { rootMargin: '-20% 0px -75% 0px' }
     );
 
-    elements.forEach((el) => observer.observe(el));
+    elements.forEach((el: any) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);

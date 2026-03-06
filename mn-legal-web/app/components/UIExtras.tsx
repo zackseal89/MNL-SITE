@@ -47,7 +47,7 @@ export default function UIExtras() {
 
     // ── REVEAL SYSTEM ──
     const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+      entries.forEach((entry: any) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('vis');
         }
@@ -55,7 +55,7 @@ export default function UIExtras() {
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     const setupReveals = () => {
-      document.querySelectorAll('.rv, .rvl, .rvr').forEach((el) => revealObserver.observe(el));
+      document.querySelectorAll('.rv, .rvl, .rvr').forEach((el: any) => revealObserver.observe(el));
     };
 
     // Initial setup

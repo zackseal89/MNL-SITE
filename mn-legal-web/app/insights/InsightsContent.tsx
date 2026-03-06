@@ -43,7 +43,7 @@ export default function InsightsContent({ posts }: InsightsContentProps) {
 
   const counts = useMemo(() => {
     const countsMap: Record<string, number> = { "All Articles": posts.length };
-    posts.forEach(post => {
+    posts.forEach((post: any) => {
       countsMap[post.category] = (countsMap[post.category] || 0) + 1;
     });
     return countsMap;
@@ -51,7 +51,7 @@ export default function InsightsContent({ posts }: InsightsContentProps) {
 
   const filteredPosts = useMemo(() => {
     if (activeCategory === 'All Articles') return posts;
-    return posts.filter(post => post.category === activeCategory);
+    return posts.filter((post: any) => post.category === activeCategory);
   }, [posts, activeCategory]);
 
   const featuredPost = filteredPosts[0];
