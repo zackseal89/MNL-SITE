@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Insights | MN Legal — MN Advocates LLP</title>
+<meta name="description" content="Analysis, commentary and practical guidance on Kenyan and East African law from the advocates of MN Legal, Nairobi's premier law firm.">
+<meta property="og:title" content="Legal Insights | MN Legal">
+<meta property="og:description" content="Thought leadership on Kenyan law from MN Advocates LLP.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════ TOKENS ═══════════ */
+:root {
+  --mn-navy:#1a2744; --mn-navy-deep:#131d33; --mn-navy-mid:#2d3e5f;
+  --mn-burgundy:#8b1c3f; --mn-burgundy-dark:#6d1532; --mn-burgundy-dim:rgba(139,28,63,0.1);
+  --mn-cream:#f5f3ef; --mn-cream-dark:#ede9e2;
+  --mn-gray:#3d4a5c; --mn-gray-light:#c9c5bd;
+  --text-primary:#333333; --text-secondary:#666666;
+  --text-on-navy:rgba(255,255,255,0.88); --text-on-navy-sub:rgba(255,255,255,0.62);
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --ease-expo:cubic-bezier(0.16,1,0.3,1);
+  --ease-back:cubic-bezier(0.34,1.56,0.64,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);color:var(--text-primary);background:#fff;overflow-x:hidden;cursor:none}
+a{text-decoration:none;color:inherit}
+button{cursor:none;font-family:var(--font-body);border:none;background:none}
+ul{list-style:none}
+img{display:block;max-width:100%}
+@media(hover:none){body{cursor:auto}button{cursor:pointer}}
+
+/* ═══════════ CURSOR ═══════════ */
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--mn-burgundy);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .3s var(--ease-expo),height .3s var(--ease-expo);mix-blend-mode:multiply}
+#cur-ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1.5px solid rgba(139,28,63,0.45);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%)}
+body.ch #cur{width:42px;height:42px;background:rgba(139,28,63,0.2);mix-blend-mode:normal}
+body.ch #cur-ring{opacity:0}
+@media(hover:none){#cur,#cur-ring{display:none}}
+
+/* ═══════════ OVERLAY ═══════════ */
+#overlay{position:fixed;inset:0;background:var(--mn-burgundy);z-index:999999;transform-origin:top;transition:transform .9s var(--ease-expo)}
+#overlay.out{transform:scaleY(0)}
+
+/* ═══════════ PROGRESS BAR ═══════════ */
+#prog{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--mn-burgundy);z-index:9997;transition:width .08s linear}
+
+/* ═══════════ NAV ═══════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:24px 60px;display:flex;align-items:center;justify-content:space-between;background:rgba(26,39,68,0.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(139,28,63,0.14);transition:padding .4s var(--ease-expo)}
+nav.scrolled{padding:15px 60px}
+.nav-brand{font-family:var(--font-display);font-size:1.15rem;font-weight:500;font-style:italic;color:#fff;letter-spacing:.04em}
+.nav-brand small{display:block;font-family:var(--font-body);font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);font-style:normal;margin-top:1px}
+.nav-links{display:flex;gap:36px}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.6);position:relative;padding-bottom:4px;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--mn-burgundy);transition:width .4s var(--ease-expo)}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a.active{color:#fff}
+.nav-btn{background:var(--mn-burgundy);border:2px solid var(--mn-burgundy);color:#fff;padding:10px 26px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border-radius:0;position:relative;overflow:hidden;transition:color .4s}
+.nav-btn::before{content:'';position:absolute;inset:0;background:var(--mn-burgundy-dark);transform:translateX(-101%);transition:transform .5s var(--ease-expo)}
+.nav-btn:hover::before{transform:translateX(0)}
+.nav-btn span{position:relative;z-index:1}
+.nav-ham{display:none;flex-direction:column;gap:5px;padding:4px}
+.nav-ham span{display:block;width:22px;height:1.5px;background:#fff;transition:transform .4s var(--ease-expo),opacity .3s}
+.nav-ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-ham.open span:nth-child(2){opacity:0}
+.nav-ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ═══════════ REVEAL SYSTEM ═══════════ */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease-expo),transform .9s var(--ease-expo)}
+.rv.vis{opacity:1;transform:none}
+.rvl{opacity:0;transform:translateX(-28px);transition:opacity .9s var(--ease-expo),transform .9s var(--ease-expo)}
+.rvl.vis{opacity:1;transform:none}
+.rvr{opacity:0;transform:translateX(28px);transition:opacity .9s var(--ease-expo),transform .9s var(--ease-expo)}
+.rvr.vis{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.d4{transition-delay:.32s}.d5{transition-delay:.40s}.d6{transition-delay:.48s}
+
+/* ═══════════ BUTTONS ═══════════ */
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--mn-burgundy);border:2px solid var(--mn-burgundy);color:#fff;padding:13px 32px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border-radius:0;position:relative;overflow:hidden;transition:color .4s}
+.btn-p::before{content:'';position:absolute;inset:0;background:var(--mn-burgundy-dark);transform:translateX(-101%);transition:transform .5s var(--ease-expo)}
+.btn-p:hover::before{transform:translateX(0)}
+.btn-p span{position:relative;z-index:1}
+.btn-on{display:inline-flex;align-items:center;gap:8px;background:transparent;border:2px solid var(--mn-navy);color:var(--mn-navy);padding:13px 32px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border-radius:0;position:relative;overflow:hidden;transition:color .4s}
+.btn-on::before{content:'';position:absolute;inset:0;background:var(--mn-navy);transform:translateX(-101%);transition:transform .5s var(--ease-expo)}
+.btn-on:hover{color:#fff}
+.btn-on:hover::before{transform:translateX(0)}
+.btn-on span{position:relative;z-index:1}
+
+/* ═══════════ HERO ═══════════ */
+#hero{min-height:72vh;background:linear-gradient(135deg,#1a2744 0%,#2d3e5f 50%,#1a2744 100%);display:flex;flex-direction:column;justify-content:center;padding:140px 60px 100px;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(139,28,63,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,28,63,.04) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black 25%,transparent 100%)}
+.h-circle{position:absolute;border-radius:50%;pointer-events:none}
+.hc1{width:280px;height:280px;top:-60px;right:-40px;border:2px solid rgba(139,28,63,.28);animation:rcw 40s linear infinite}
+.hc2{width:200px;height:200px;bottom:-40px;left:-30px;border:1.5px solid rgba(139,28,63,.18);animation:rccw 50s linear infinite}
+@keyframes rcw{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes rccw{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+.hero-content{position:relative;z-index:2;max-width:820px}
+.h-tag{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:28px;animation:fup .8s var(--ease-expo) .15s both}
+.h-dot{width:6px;height:6px;border-radius:50%;background:var(--mn-burgundy);animation:pd 2s ease-in-out infinite}
+@keyframes pd{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.h-div{width:56px;height:3px;background:var(--mn-burgundy);margin-bottom:32px;transform-origin:left;animation:sxi .9s var(--ease-expo) .35s both}
+@keyframes sxi{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.h-headline{font-family:var(--font-display);font-size:clamp(32px,5.5vw,58px);font-weight:500;font-style:italic;line-height:1.1;color:#fff;margin-bottom:28px}
+.h-line{display:block;overflow:hidden}
+.h-inner{display:block;animation:su 1.1s var(--ease-expo) both}
+.h-inner.l1{animation-delay:.4s}
+.h-inner.l2{animation-delay:.52s}
+@keyframes su{from{transform:translateY(110%)}to{transform:translateY(0)}}
+.h-sub{font-size:17px;font-weight:300;line-height:1.75;color:rgba(255,255,255,.65);max-width:500px;margin-bottom:40px;animation:fup .9s var(--ease-expo) .85s both}
+@keyframes fup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* Search bar in hero */
+.h-search{display:flex;max-width:480px;animation:fup .9s var(--ease-expo) 1.05s both}
+.h-search-input{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-right:none;padding:13px 20px;font-family:var(--font-body);font-size:14px;color:#fff;outline:none;border-radius:0;transition:background .3s,border-color .3s}
+.h-search-input::placeholder{color:rgba(255,255,255,.35)}
+.h-search-input:focus{background:rgba(255,255,255,.13);border-color:rgba(139,28,63,.6)}
+.h-search-btn{background:var(--mn-burgundy);border:1px solid var(--mn-burgundy);padding:13px 20px;color:#fff;font-size:15px;border-radius:0;transition:background .3s}
+.h-search-btn:hover{background:var(--mn-burgundy-dark)}
+
+/* Breadcrumb */
+.breadcrumb{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.5px;margin-bottom:20px;animation:fup .7s var(--ease-expo) .1s both}
+.breadcrumb a{color:rgba(255,255,255,.4);transition:color .3s}
+.breadcrumb a:hover{color:rgba(255,255,255,.8)}
+.breadcrumb span{margin:0 8px}
+
+/* ═══════════ CATEGORY FILTER ═══════════ */
+#cat-bar{position:sticky;top:72px;z-index:100;background:#fff;border-bottom:1px solid var(--mn-cream-dark);overflow-x:auto;-webkit-overflow-scrolling:touch}
+#cat-bar::-webkit-scrollbar{display:none}
+.cat-inner{display:flex;gap:0;padding:0 60px;min-width:max-content;border-bottom:none}
+.cat-btn{font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;padding:18px 22px;border-radius:0;border:none;border-bottom:3px solid transparent;color:var(--text-secondary);background:none;white-space:nowrap;transition:color .3s,border-color .3s;position:relative}
+.cat-btn:hover{color:var(--mn-burgundy);border-bottom-color:rgba(139,28,63,.3)}
+.cat-btn.active{color:var(--mn-burgundy);border-bottom-color:var(--mn-burgundy);font-weight:600}
+.cat-count{font-size:10px;background:var(--mn-cream-dark);color:var(--text-secondary);padding:2px 6px;margin-left:6px;border-radius:0;vertical-align:middle;transition:background .3s,color .3s}
+.cat-btn.active .cat-count{background:var(--mn-burgundy-dim);color:var(--mn-burgundy)}
+
+/* ═══════════ MAIN CONTENT AREA ═══════════ */
+#content{padding:0 60px 100px;max-width:1200px;margin:0 auto}
+
+/* ═══════════ FEATURED ARTICLE ═══════════ */
+#featured{padding:64px 0;border-bottom:1px solid var(--mn-cream-dark)}
+.feat-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:0;border:1px solid var(--mn-cream-dark);overflow:hidden}
+.feat-img{position:relative;overflow:hidden;background:linear-gradient(160deg,#2d3e5f,#1a2744)}
+.feat-img-inner{width:100%;height:100%;min-height:340px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:80px;color:rgba(255,255,255,.05);font-style:italic;transition:transform .7s var(--ease-expo)}
+.feat-grid:hover .feat-img-inner{transform:scale(1.04)}
+.feat-badge{position:absolute;top:24px;left:24px;background:var(--mn-burgundy);color:#fff;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:0}
+.feat-body{padding:52px 52px;display:flex;flex-direction:column;justify-content:center;background:#fff}
+.art-tag{display:inline-block;background:var(--mn-burgundy);color:#fff;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;margin-bottom:16px;border-radius:0}
+.art-date{font-size:12px;color:var(--text-secondary);letter-spacing:.5px;margin-bottom:14px;display:block}
+.feat-title{font-family:var(--font-display);font-size:clamp(22px,2.5vw,30px);font-weight:600;line-height:1.25;color:var(--mn-navy);margin-bottom:18px;transition:color .3s}
+.feat-grid:hover .feat-title{color:var(--mn-burgundy)}
+.feat-excerpt{font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:32px}
+.read-more{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mn-burgundy);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .3s,gap .4s var(--ease-back)}
+.read-more:hover{border-color:var(--mn-burgundy);gap:14px}
+.rm-arrow{transition:transform .4s var(--ease-back);font-size:13px}
+.read-more:hover .rm-arrow{transform:rotate(-45deg)}
+.author-row{display:flex;align-items:center;gap:12px;margin-top:28px;padding-top:28px;border-top:1px solid var(--mn-cream-dark)}
+.author-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--mn-navy),var(--mn-navy-mid));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:14px;color:rgba(255,255,255,.6);flex-shrink:0}
+.author-name{font-size:13px;font-weight:600;color:var(--mn-navy);display:block}
+.author-role{font-size:11px;color:var(--text-secondary)}
+
+/* ═══════════ SECTION HEADINGS ═══════════ */
+.sec-label{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--mn-burgundy);margin-bottom:8px}
+.sec-label::before{content:'';width:24px;height:1px;background:var(--mn-burgundy)}
+.grid-heading{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--mn-navy);padding-bottom:12px;border-bottom:2px solid var(--mn-burgundy);display:inline-block;margin-bottom:40px}
+
+/* ═══════════ ARTICLE GRID ═══════════ */
+.art-section{padding:64px 0 0}
+.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(139,28,63,.1)}
+.art-card{background:#fff;overflow:hidden;display:flex;flex-direction:column;transition:transform .4s var(--ease-expo);opacity:1;transition:transform .4s var(--ease-expo),opacity .4s ease}
+.art-card:hover{transform:translateY(-4px)}
+.art-card.hidden{opacity:0;transform:scale(.97);pointer-events:none;max-height:0;overflow:hidden}
+.art-card-img{position:relative;overflow:hidden;background:linear-gradient(160deg,#e8e4dc,#f0ece4);aspect-ratio:16/9}
+.art-card-img-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:40px;color:rgba(26,39,68,.07);font-style:italic;transition:transform .6s var(--ease-expo)}
+.art-card:hover .art-card-img-inner{transform:scale(1.05)}
+.art-card-tag{position:absolute;top:16px;left:16px;background:var(--mn-burgundy);color:#fff;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:0}
+.art-card-body{padding:24px 26px 32px;flex:1;display:flex;flex-direction:column}
+.art-card-date{font-size:11px;color:var(--text-secondary);letter-spacing:.5px;margin-bottom:10px}
+.art-card-title{font-family:var(--font-display);font-size:18px;font-weight:600;line-height:1.3;color:var(--mn-navy);margin-bottom:12px;transition:color .3s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.art-card:hover .art-card-title{color:var(--mn-burgundy)}
+.art-card-exc{font-size:13.5px;line-height:1.7;color:var(--text-secondary);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+.art-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid var(--mn-cream-dark)}
+.art-card-author{font-size:11px;color:var(--mn-gray)}
+.art-card-time{font-size:10px;color:var(--text-secondary);background:var(--mn-cream);padding:3px 8px}
+.art-card-link{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mn-burgundy);display:inline-flex;align-items:center;gap:6px;margin-top:14px;border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .3s,gap .35s var(--ease-back)}
+.art-card:hover .art-card-link{border-color:var(--mn-burgundy);gap:10px}
+
+/* ═══════════ NEWSLETTER STRIP ═══════════ */
+.nl-strip{background:linear-gradient(135deg,#1a2744 0%,#2d3e5f 50%,#1a2744 100%);padding:64px 60px;position:relative;overflow:hidden;margin:60px 0}
+.nl-circle{position:absolute;border-radius:50%;pointer-events:none}
+.nlc1{width:260px;height:260px;right:-60px;top:-60px;border:2px solid rgba(139,28,63,.22)}
+.nlc2{width:180px;height:180px;left:-40px;bottom:-40px;border:1.5px solid rgba(139,28,63,.15)}
+.nl-strip::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(139,28,63,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,28,63,.04) 1px,transparent 1px);background-size:60px 60px}
+.nl-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.nl-tag{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:16px}
+.nl-title{font-family:var(--font-display);font-size:clamp(22px,3vw,32px);font-weight:500;font-style:italic;color:#fff;line-height:1.25;margin-bottom:14px}
+.nl-sub{font-size:14px;line-height:1.7;color:rgba(255,255,255,.6);margin-bottom:4px}
+.nl-trust{font-size:11px;color:rgba(255,255,255,.35);margin-top:12px}
+.nl-form{display:flex;flex-direction:column;gap:16px}
+.nl-input{background:transparent;border:none;border-bottom:1px solid rgba(139,28,63,.5);padding:13px 0;font-family:var(--font-body);font-size:15px;color:#fff;outline:none;transition:border-color .3s}
+.nl-input::placeholder{color:rgba(255,255,255,.3)}
+.nl-input:focus{border-color:var(--mn-burgundy)}
+.nl-form .btn-p{align-self:flex-start}
+.nl-success{display:none;font-size:14px;color:rgba(255,255,255,.8);padding:14px 0}
+
+/* ═══════════ LOAD MORE / PAGINATION ═══════════ */
+.pagination{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:56px;padding-top:40px;border-top:1px solid var(--mn-cream-dark)}
+.page-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;border:1px solid var(--mn-gray-light);background:#fff;color:var(--mn-navy);border-radius:0;transition:border-color .3s,color .3s,background .3s}
+.page-btn:hover{border-color:var(--mn-burgundy);color:var(--mn-burgundy)}
+.page-btn.active{background:var(--mn-burgundy);border-color:var(--mn-burgundy);color:#fff}
+.page-btn.arrow{font-size:16px}
+
+/* ═══════════ BACK TO TOP ═══════════ */
+#btt{position:fixed;bottom:36px;right:36px;width:46px;height:46px;background:var(--mn-navy);border:1px solid rgba(139,28,63,.4);color:#fff;font-size:17px;display:flex;align-items:center;justify-content:center;border-radius:0;opacity:0;transform:translateY(12px);transition:opacity .4s,transform .4s var(--ease-expo),background .3s;z-index:500}
+#btt.vis{opacity:1;transform:translateY(0)}
+#btt:hover{background:var(--mn-burgundy);border-color:var(--mn-burgundy)}
+
+/* ═══════════ FOOTER ═══════════ */
+footer{background:var(--mn-navy-deep);padding:64px 60px 36px;border-top:1px solid rgba(139,28,63,.22)}
+.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:52px}
+.foot-brand-name{font-family:var(--font-display);font-size:1.3rem;font-weight:500;font-style:italic;color:#fff;letter-spacing:.04em;margin-bottom:6px}
+.foot-brand-sub{font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px}
+.foot-tagline{font-size:13px;line-height:1.7;color:rgba(255,255,255,.4);max-width:260px;margin-bottom:24px}
+.foot-social{display:flex;gap:10px}
+.soc-btn{width:34px;height:34px;border:1px solid rgba(139,28,63,.3);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.45);font-size:12px;transition:background .3s,border-color .3s,color .3s;border-radius:0}
+.soc-btn:hover{background:var(--mn-burgundy);border-color:var(--mn-burgundy);color:#fff}
+.foot-col-ttl{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
+.foot-links{display:flex;flex-direction:column;gap:11px}
+.foot-links a{font-size:13px;color:rgba(255,255,255,.5);transition:color .3s}
+.foot-links a:hover{color:rgba(255,255,255,.85)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.foot-copy{font-size:11px;color:rgba(255,255,255,.28)}
+.foot-disc{font-size:11px;font-style:italic;color:rgba(255,255,255,.22);max-width:560px;text-align:right}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media(max-width:1024px){
+  nav{padding:20px 36px}nav.scrolled{padding:14px 36px}
+  #hero{padding:130px 36px 90px}
+  #content{padding:0 36px 80px}
+  .nl-strip{padding:52px 36px}
+  footer{padding:52px 36px 28px}
+  .feat-grid{grid-template-columns:1fr}
+  .art-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .nl-inner{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  nav{padding:18px 24px}nav.scrolled{padding:13px 24px}
+  .nav-links,.nav-btn{display:none}
+  .nav-ham{display:flex}
+  #hero{padding:120px 24px 80px}
+  #content{padding:0 24px 64px}
+  .cat-inner{padding:0 24px}
+  .art-grid{grid-template-columns:1fr}
+  .nl-strip{padding:48px 24px}
+  .foot-top{grid-template-columns:1fr}
+  footer{padding:48px 24px 28px}
+  .foot-disc{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rv,.rvl,.rvr{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<div id="overlay"></div>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<div id="prog"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">MN Legal <small>MN Advocates LLP</small></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#practices">Practice Areas</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#team">Our Team</a></li>
+    <li><a href="blog.html" class="active">Insights</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="nav-btn" onclick="document.location='index.html#contact'"><span>Consult Now</span></button>
+  <button class="nav-ham" id="ham" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="h-circle hc1"></div>
+  <div class="h-circle hc2"></div>
+  <div class="hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Legal Insights</div>
+    <div class="h-tag"><span class="h-dot"></span>Legal Insights &amp; Commentary</div>
+    <div class="h-div"></div>
+    <h1 class="h-headline">
+      <span class="h-line"><span class="h-inner l1">Thought Leadership</span></span>
+      <span class="h-line"><span class="h-inner l2">from MN Advocates LLP</span></span>
+    </h1>
+    <p class="h-sub">Analysis, commentary, and practical guidance on Kenyan law and the East African legal landscape — from our senior advocates.</p>
+    <div class="h-search">
+      <input class="h-search-input" type="search" id="search-input" placeholder="Search articles — Companies Act, Property, Litigation…" aria-label="Search articles">
+      <button class="h-search-btn" id="search-btn" aria-label="Search">⌕</button>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY FILTER -->
+<div id="cat-bar" role="navigation" aria-label="Article categories">
+  <div class="cat-inner">
+    <button class="cat-btn active" data-cat="all">All Articles <span class="cat-count">18</span></button>
+    <button class="cat-btn" data-cat="corporate">Corporate Law <span class="cat-count">4</span></button>
+    <button class="cat-btn" data-cat="litigation">Litigation <span class="cat-count">3</span></button>
+    <button class="cat-btn" data-cat="property">Property Law <span class="cat-count">3</span></button>
+    <button class="cat-btn" data-cat="employment">Employment Law <span class="cat-count">3</span></button>
+    <button class="cat-btn" data-cat="banking">Banking &amp; Finance <span class="cat-count">2</span></button>
+    <button class="cat-btn" data-cat="ip">Intellectual Property <span class="cat-count">2</span></button>
+    <button class="cat-btn" data-cat="regulatory">Regulatory Updates <span class="cat-count">1</span></button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="content">
+
+  <!-- FEATURED ARTICLE -->
+  <div id="featured">
+    <div class="sec-label rv">Featured Article</div>
+    <a href="article.html" class="feat-grid rv d1" style="display:grid;text-decoration:none;color:inherit">
+      <div class="feat-img rvl d1">
+        <div class="feat-img-inner">MN</div>
+        <span class="feat-badge">Featured</span>
+      </div>
+      <div class="feat-body rvr d2">
+        <span class="art-tag">Corporate Law</span>
+        <span class="art-date">12 February 2026</span>
+        <h2 class="feat-title">Navigating Kenya's New Companies Act: What Every Director Must Know in 2026</h2>
+        <p class="feat-excerpt">The amended Companies Act introduces sweeping changes to director liability, shareholder rights, and corporate disclosure requirements. Our corporate team provides a comprehensive analysis of every provision that board members must understand before the next AGM season — with practical action steps.</p>
+        <div class="read-more">Read Full Article <span class="rm-arrow">→</span></div>
+        <div class="author-row">
+          <div class="author-av">M</div>
+          <div>
+            <span class="author-name">M. Mwangi</span>
+            <span class="author-role">Senior Partner · 8 min read</span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- ARTICLE GRID ROW 1 -->
+  <div class="art-section">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <h2 class="grid-heading rv">Latest Articles</h2>
+      <span class="rv d1" style="font-size:12px;color:var(--text-secondary)" id="results-count">Showing 6 of 18 articles</span>
+    </div>
+    <div class="art-grid" id="art-grid">
+
+      <article class="art-card rv d1" data-cat="corporate">
+        <div class="art-card-img">
+          <div class="art-card-img-inner">§</div>
+          <span class="art-card-tag">Corporate Law</span>
+        </div>
+        <div class="art-card-body">
+          <span class="art-card-date">28 January 2026</span>
+          <h3 class="art-card-title">Director Liability Under the New Companies Act: Five Critical Changes</h3>
+          <p class="art-card-exc">Personal liability provisions have been significantly expanded. We break down the five changes every director of a Kenyan company must understand immediately.</p>
+          <div class="art-card-footer">
+            <span class="art-card-author">M. Mwangi</span>
+            <span class="art-card-time">6 min</span>
+          </div>
+          <a href="article.html" class="art-card-link">Read Article →</a>
+        </div>
+      </article>
+
+      <article class="art-card rv d2" data-cat="property">
+        <div class="art-card-img">
+          <div class="art-card-img-inner">⊞</div>
+          <span class="art-card-tag">Property Law</span>
+        </div>
+        <div class="art-card-body">
+          <span class="art-card-date">20 January 2026</span>
+          <h3 class="art-card-title">Land Titling Reforms: How NLC Directives Affect Nairobi Property Buyers</h3>
+          <p class="art-card-exc">The National Land Commission has issued new directives that change how property titles are processed — and what due diligence every buyer must now conduct before signing.</p>
+          <div class="art-card-footer">
+            <span class="art-card-author">W. Otieno</span>
+            <span class="art-card-time">5 min</span>
+          </div>
+          <a href="article.html" class="art-card-link">Read Article →</a>
+        </div>
+      </article>
+
+      <article class="art-card rv d3" data-cat="employment">
+        <div class="art-card-img">
+          <div class="art-card-img-inner">◈</div>
+          <span class="art-card-tag">Employment Law</span>
+        </div>
+        <div class="art-card-body">
+          <span class="art-card-date">15 January 2026</span>
+          <h3 class="art-card-title">Remote Work Policies and Kenyan Employment Law: A Compliance Guide for Employers</h3>
+          <p class="art-card-exc">As hybrid working becomes the standard, employers must urgently revisit their employment contracts and workplace policies to stay compliant with the Employment Act.</p>
+          <div class="art-card-footer">
+            <span class="art-card-author">W. Otieno</span>
+            <span class="art-card-time">7 min</span>
+          </div>
+          <a href="article.html" class="art-card-link">Read Article →</a>
+        </div>
+      </article>
+
+      <article class="art-card rv d4" data-cat="litigation">
+        <div class="art-card-img">
+          <div class="art-card-img-inner">⚖</div>
+          <span class="art-card-tag">Litigation</span>
+        </div>
+        <div class="art-card-body">
+          <span class="art-card-date">8 January 2026</span>
+          <h3 class="art-card-title">Court of Appeal Ruling on Commercial Arbitration: What It Means for Kenyan Businesses</h3>
+          <p class="art-card-exc">A landmark Court of Appeal decision has clarified the enforceability of arbitration clauses in commercial contracts — with significant implications for dispute resolution strategy.</p>
+          <div class="art-card-footer">
+            <span class="art-card-author">N. Njoroge</span>
+            <span class="art-card-time">9 min</span>
+          </div>
+          <a href="article.html" class="art-card-link">Read Article →</a>
+        </div>
+      </article>
+
+      <article class="art-card rv d5" data-cat="banking">
+        <div class="art-card-img">
+          <div class="art-card-img-inner">₦</div>
+          <span class="art-card-tag">Banking &amp; Finance</span>
+        </div>
+        <div class="art-card-body">
+          <span class="art-card-date">2 January 2026</span>
+          <h3 class="art-card-title">CBK's New Digital Lending Regulations: Compliance Obligations for Fintech Lenders</h3>
+          <p class="art-card-exc">The Central Bank of Kenya has gazetted new digital lending regulations with strict consumer protection requirements. Here is what every licensed lender must do by March 2026.</p>
+          <div class="art-card-footer">
+            <span class="art-card-author">A. Kamau</span>
+            <span class="art-card-time">6 min</span>
+          </div>
+          <a href="article.html" class="art-card-link">Read Article →</a>
+        </div>
+      </article>
+
+      <article class="art-card rv d6" data-cat="ip">
+        <div class="art-card-img">
+          <div class="art-card-img-inner">✦</div>
+          <span class="art-card-tag">Intellectual Property</span>
+        </div>
+        <div class="art-card-body">
+          <span class="art-card-date">18 December 2025</span>
+          <h3 class="art-card-title">Trademark Registration in Kenya: A Step-by-Step Guide for 2026</h3>
+          <p class="art-card-exc">The KEIPO has updated its trademark registration procedures significantly. Our IP team walks through the complete process, timelines, costs, and common pitfalls to avoid.</p>
+          <div class="art-card-footer">
+            <span class="art-card-author">N. Njoroge</span>
+            <span class="art-card-time">5 min</span>
+          </div>
+          <a href="article.html" class="art-card-link">Read Article →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- NEWSLETTER STRIP -->
+  <div class="nl-strip rv">
+    <div class="nl-circle nlc1"></div>
+    <div class="nl-circle nlc2"></div>
+    <div class="nl-inner">
+      <div class="rvl d1">
+        <div class="nl-tag">MN Legal Updates</div>
+        <h3 class="nl-title">Stay Informed on Kenyan Law</h3>
+        <p class="nl-sub">Join 2,400+ legal professionals receiving our monthly analysis on Kenyan and East African law — delivered to your inbox.</p>
+        <p class="nl-trust">No spam. Unsubscribe at any time.</p>
+      </div>
+      <div class="rvr d2">
+        <div class="nl-form" id="nl-form">
+          <input class="nl-input" type="email" id="nl-email" placeholder="your@email.com" aria-label="Your email address">
+          <button class="btn-p" id="nl-submit"><span>Subscribe to Updates</span></button>
+          <p class="nl-success" id="nl-success">✓ You're subscribed. Welcome to the MN Legal community.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE GRID ROW 2 -->
+  <div class="art-section">
+    <h2 class="grid-heading rv">More Insights</h2>
+    <div class="art-grid">
+
+      <article class="art-card rv d1" data-cat="litigation">
+        <div class="art-card-img">
+          <div class="art-card-img-inner">⊕</div>
+          <span class="art-card-tag">Litigation</span>
+        </div>
+        <div class="art-card-body">
+          <span class="art-card-date">5 December 2025</span>
+          <h3 class="art-card-title">Costs Awards in Kenyan Commercial Litigation: Recent Trends and Strategies</h3>
+          <p class="art-card-exc">Analysing recent High Court decisions on costs awards and what they signal for litigation strategy and settlement timing in commercial disputes.</p>
+          <div class="art-card-footer"><span class="art-card-author">N. Njoroge</span><span class="art-card-time">6 min</span></div>
+          <a href="article.html" class="art-card-link">Read Article →</a>
+        </div>
+      </article>
+
+      <article class="art-card rv d2" data-cat="property">
+        <div class="art-card-img">
+          <div class="art-card-img-inner">⌂</div>
+          <span class="art-card-tag">Property Law</span>
+        </div>
+        <div class="art-card-body">
+          <span class="art-card-date">22 November 2025</span>
+          <h3 class="art-card-title">Leasehold Conversion: What Nairobi Property Owners Must Do Before the 2026 Deadline</h3>
+          <p class="art-card-exc">Thousands of Nairobi leasehold titles must be converted or renewed. We explain the legal process, required documents, and critical deadlines.</p>
+          <div class="art-card-footer"><span class="art-card-author">W. Otieno</span><span class="art-card-time">7 min</span></div>
+          <a href="article.html" class="art-card-link">Read Article →</a>
+        </div>
+      </article>
+
+      <article class="art-card rv d3" data-cat="employment">
+        <div class="art-card-img">
+          <div class="art-card-img-inner">⊿</div>
+          <span class="art-card-tag">Employment Law</span>
+        </div>
+        <div class="art-card-body">
+          <span class="art-card-date">10 November 2025</span>
+          <h3 class="art-card-title">Constructive Dismissal in Kenya: Key Cases and Employer Risk Management</h3>
+          <p class="art-card-exc">Recent Employment Court decisions have clarified what constitutes constructive dismissal. Employers must review their HR policies in light of these rulings.</p>
+          <div class="art-card-footer"><span class="art-card-author">W. Otieno</span><span class="art-card-time">8 min</span></div>
+          <a href="article.html" class="art-card-link">Read Article →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination rv">
+    <button class="page-btn arrow">←</button>
+    <button class="page-btn active">1</button>
+    <button class="page-btn">2</button>
+    <button class="page-btn">3</button>
+    <span style="color:var(--mn-gray-light);font-size:13px;padding:0 8px">…</span>
+    <button class="page-btn">8</button>
+    <button class="page-btn arrow">→</button>
+  </div>
+
+</div><!-- /content -->
+
+<!-- BACK TO TOP -->
+<button id="btt" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-brand-name">MN Legal</div>
+      <div class="foot-brand-sub">MN Advocates LLP</div>
+      <p class="foot-tagline">Precision. Counsel. Resolve. — Serving Kenya and East Africa from Nairobi.</p>
+      <div class="foot-social">
+        <a href="https://twitter.com/mnlegaladvocate" class="soc-btn" aria-label="Twitter" target="_blank" rel="noopener">𝕏</a>
+        <a href="https://linkedin.com/company/mn-legal" class="soc-btn" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+        <a href="mailto:info@mnlegal.net" class="soc-btn" aria-label="Email">✉</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-col-ttl">Practice Areas</div>
+      <ul class="foot-links">
+        <li><a href="index.html#practices">Corporate &amp; Commercial</a></li>
+        <li><a href="index.html#practices">Litigation</a></li>
+        <li><a href="index.html#practices">Conveyancing</a></li>
+        <li><a href="index.html#practices">Employment Law</a></li>
+        <li><a href="index.html#practices">Banking &amp; Finance</a></li>
+        <li><a href="index.html#practices">Intellectual Property</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-col-ttl">Insights</div>
+      <ul class="foot-links">
+        <li><a href="blog.html">All Articles</a></li>
+        <li><a href="blog.html?cat=corporate">Corporate Law</a></li>
+        <li><a href="blog.html?cat=litigation">Litigation</a></li>
+        <li><a href="blog.html?cat=property">Property Law</a></li>
+        <li><a href="blog.html?cat=employment">Employment</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-col-ttl">Contact</div>
+      <ul class="foot-links">
+        <li><a href="tel:+254700325089">+254 700 325 089</a></li>
+        <li><a href="mailto:info@mnlegal.net">info@mnlegal.net</a></li>
+        <li><a href="https://mnlegal.net" target="_blank" rel="noopener">mnlegal.net</a></li>
+        <li><span style="color:rgba(255,255,255,.35)">Nairobi, Kenya</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p class="foot-copy">© 2026 MN Advocates LLP. All rights reserved.</p>
+    <p class="foot-disc">The content on this website is for general information only and does not constitute legal advice. Consult a qualified advocate for advice specific to your circumstances.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict'
+
+/* ── OVERLAY ── */
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('overlay').classList.add('out'),80)})
+
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring')
+let mx=0,my=0,rx=0,ry=0
+if(window.matchMedia('(hover:hover)').matches){
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'})
+  ;(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})()
+  document.querySelectorAll('button,a,.art-card,.feat-grid,.page-btn').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('ch'))
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'))
+  })
+}
+
+/* ── SCROLL ── */
+const prog=document.getElementById('prog'),nav=document.getElementById('nav'),btt=document.getElementById('btt')
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100
+  prog.style.width=Math.min(pct,100)+'%'
+  nav.classList.toggle('scrolled',window.scrollY>80)
+  btt.classList.toggle('vis',window.scrollY>500)
+},{passive:true})
+
+/* ── REVEAL ── */
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'})
+document.querySelectorAll('.rv,.rvl,.rvr').forEach(el=>ro.observe(el))
+
+/* ── CATEGORY FILTER ── */
+const catBtns=document.querySelectorAll('.cat-btn')
+const cards=document.querySelectorAll('.art-card')
+const countEl=document.getElementById('results-count')
+
+catBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    catBtns.forEach(b=>b.classList.remove('active'))
+    btn.classList.add('active')
+    const cat=btn.dataset.cat
+    let visible=0
+    cards.forEach(card=>{
+      const match=cat==='all'||card.dataset.cat===cat
+      if(match){
+        card.classList.remove('hidden')
+        card.style.opacity='0'
+        card.style.transform='translateY(16px)'
+        setTimeout(()=>{card.style.transition='opacity .5s var(--ease-expo),transform .5s var(--ease-expo)';card.style.opacity='1';card.style.transform='none'},50+visible*60)
+        visible++
+      } else {
+        card.style.transition='opacity .25s ease,transform .25s ease'
+        card.style.opacity='0'
+        card.style.transform='scale(.97)'
+        setTimeout(()=>card.classList.add('hidden'),280)
+      }
+    })
+    setTimeout(()=>{
+      if(countEl)countEl.textContent=`Showing ${visible} article${visible!==1?'s':''}`
+    },320)
+  })
+})
+
+/* ── SEARCH ── */
+const searchInput=document.getElementById('search-input')
+const searchBtn=document.getElementById('search-btn')
+function doSearch(){
+  const q=searchInput.value.toLowerCase().trim()
+  if(!q)return
+  cards.forEach(card=>{
+    const title=card.querySelector('.art-card-title')?.textContent.toLowerCase()||''
+    const exc=card.querySelector('.art-card-exc')?.textContent.toLowerCase()||''
+    const match=title.includes(q)||exc.includes(q)
+    card.style.opacity=match?'1':'0.3'
+    card.style.transform=match?'none':'scale(.97)'
+  })
+}
+searchBtn.addEventListener('click',doSearch)
+searchInput.addEventListener('keydown',e=>{if(e.key==='Enter')doSearch()})
+searchInput.addEventListener('input',e=>{if(!e.target.value)cards.forEach(c=>{c.style.opacity='1';c.style.transform='none'})})
+
+/* ── NEWSLETTER ── */
+document.getElementById('nl-submit').addEventListener('click',e=>{
+  e.preventDefault()
+  const email=document.getElementById('nl-email').value.trim()
+  if(!email||!email.includes('@')){
+    document.getElementById('nl-email').style.borderColor='#e05252'
+    setTimeout(()=>document.getElementById('nl-email').style.borderColor='',2000)
+    return
+  }
+  const btn=document.getElementById('nl-submit')
+  const success=document.getElementById('nl-success')
+  btn.style.display='none'
+  success.style.display='block'
+  document.getElementById('nl-email').style.opacity='.5'
+})
+
+/* ── PAGINATION ── */
+document.querySelectorAll('.page-btn:not(.arrow)').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.page-btn:not(.arrow)').forEach(b=>b.classList.remove('active'))
+    btn.classList.add('active')
+    window.scrollTo({top:document.getElementById('cat-bar').offsetTop-80,behavior:'smooth'})
+  })
+})
+
+/* ── HAM MENU ── */
+const ham=document.getElementById('ham')
+ham.addEventListener('click',()=>{ham.classList.toggle('open')})
+
+})()
+</script>
+</body>
+</html>
