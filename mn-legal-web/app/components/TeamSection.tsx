@@ -93,10 +93,10 @@ export default function TeamSection() {
                   alt={member.name}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
-                  priority={i < 4}
+                  className="object-cover transition-all duration-700 scale-100 group-hover:scale-105"
+                  priority={true}
                 />
-                <div className="absolute inset-0 bg-[rgba(26,39,68,0.2)] group-hover:bg-transparent transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-[rgba(26,39,68,0.05)] group-hover:bg-transparent transition-all duration-500"></div>
               </div>
               
               <div className="relative pl-4 border-l-0 group-hover:border-l-4 border-[var(--mn-burgundy)] transition-all duration-300">

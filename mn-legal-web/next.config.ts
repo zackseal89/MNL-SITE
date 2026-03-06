@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "mnlegal.net",
+        hostname: "**.mnlegal.net",
       },
       {
         protocol: "https",
