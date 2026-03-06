@@ -2,13 +2,21 @@
 
 import Link from 'next/link';
 
+import Image from 'next/image';
+
 export default function Footer() {
   return (
     <footer className="bg-[var(--mn-navy-deep)] p-[64px_60px_36px] border-t border-[rgba(139,28,63,.22)] md:px-[60px] px-[24px]">
       <div className="foot-top grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-[52px] mb-[52px]">
         <div>
-          <div className="foot-brand-name font-display text-[1.3rem] font-medium italic text-white tracking-[.04em] mb-[6px]">MN Legal</div>
-          <div className="foot-brand-sub text-[9px] font-normal tracking-[3px] uppercase text-white/30 mb-[18px]">MN Advocates LLP</div>
+          <Link href="/" className="foot-brand relative block w-[200px] h-[50px] mb-6">
+            <Image 
+              src="https://mnlegal.net/wp-content/uploads/2021/08/MNL-ADVOCATES-LLP-MN-LEGAL-negative.svg" 
+              alt="MN Legal"
+              fill
+              className="object-contain object-left"
+            />
+          </Link>
           <p className="foot-tagline text-[13px] leading-[1.7] text-white/40 max-w-[260px] mb-[24px]">Precision. Counsel. Resolve. — Serving Kenya and East Africa from Nairobi.</p>
           <div className="foot-social flex gap-[10px]">
             {['𝕏', 'in', '✉'].map((icon, i) => (

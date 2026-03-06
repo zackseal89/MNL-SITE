@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
+import Image from 'next/image';
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -19,12 +21,17 @@ export default function Navbar() {
     <nav 
       id="nav" 
       className={`fixed top-0 left-0 right-0 z-[1000] flex items-center justify-between transition-all duration-400 ease-[var(--ease-expo)] md:px-[60px] px-[24px] ${
-        scrolled ? 'p-[15px_60px] bg-[rgba(26,39,68,0.95)] backdrop-blur-[20px] border-b border-[rgba(139,28,63,0.14)]' : 'p-[24px_60px] bg-[rgba(26,39,68,0.93)] backdrop-blur-[20px] border-b border-[rgba(139,28,63,0.14)]'
+        scrolled ? 'p-[12px_60px] bg-[rgba(26,39,68,0.98)] backdrop-blur-[20px] border-b border-[rgba(139,28,63,0.14)]' : 'p-[20px_60px] bg-transparent'
       }`}
     >
-      <Link href="/" className="nav-brand font-display text-[1.15rem] font-medium italic text-white tracking-[.04em]">
-        MN Legal 
-        <small className="block font-body text-[9px] font-normal tracking-[3px] uppercase text-white/35 not-italic mt-[1px]">MN Advocates LLP</small>
+      <Link href="/" className="nav-brand relative w-[180px] h-[45px] transition-transform duration-500 hover:scale-105">
+        <Image 
+          src="https://mnlegal.net/wp-content/uploads/2021/08/MNL-ADVOCATES-LLP-MN-LEGAL-negative.svg" 
+          alt="MN Legal - MN Advocates LLP"
+          fill
+          className="object-contain object-left"
+          priority
+        />
       </Link>
 
       <ul className="nav-links hidden md:flex gap-[36px]">
