@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -87,10 +88,13 @@ export default function TeamSection() {
           {team.map((member: any, i: number) => (
             <div key={i} className="team-card group bg-white p-4 transition-all duration-500 hover:shadow-xl relative">
               <div className="relative aspect-[4/5] mb-6 overflow-hidden bg-gray-100">
-                <img
+                <Image
                   src={member.image}
                   alt={member.name}
-                  className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
+                  priority={i < 4}
                 />
                 <div className="absolute inset-0 bg-[rgba(26,39,68,0.2)] group-hover:bg-transparent transition-all duration-500"></div>
               </div>
