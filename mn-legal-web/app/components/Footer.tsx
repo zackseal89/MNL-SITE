@@ -28,8 +28,7 @@ export default function Footer() {
         <div>
           <div className="foot-col-ttl text-[10px] font-semibold tracking-[2.5px] uppercase text-white/30 mb-[20px]">Practice Areas</div>
           <ul className="foot-links flex flex-col gap-[11px]">
-            {['Corporate & Commercial', 'Litigation', 'Conveyancing', 'Employment Law', 'Banking & Finance', 'Intellectual Property'].map((link) => (
-              <li key={link}>
+            {['Corporate & Commercial', 'Litigation', 'Conveyancing', 'Employment Law', 'Banking & Finance', 'Intellectual Property'].map((link: string) => (              <li key={link}>
                 <Link href="/#practices" className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85">
                   {link}
                 </Link>
@@ -41,7 +40,7 @@ export default function Footer() {
         <div>
           <div className="foot-col-ttl text-[10px] font-semibold tracking-[2.5px] uppercase text-white/30 mb-[20px]">Insights</div>
           <ul className="foot-links flex flex-col gap-[11px]">
-            {['All Articles', 'Corporate Law', 'Litigation', 'Property Law', 'Employment'].map((link) => (
+            {['All Articles', 'Corporate Law', 'Litigation', 'Property Law', 'Employment'].map((link: string) => (
               <li key={link}>
                 <Link href="/insights" className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85">
                   {link}

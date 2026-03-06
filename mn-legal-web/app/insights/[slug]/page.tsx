@@ -35,7 +35,7 @@ export default async function SingleArticle({ params }: PageProps) {
       return bCat - aCat;
     })
     .slice(0, 3)
-    .map(mapWPPostToPost);
+    .map((p: any) => mapWPPostToPost(p));
 
   return (
     <main className="relative bg-white">
@@ -106,7 +106,7 @@ export default async function SingleArticle({ params }: PageProps) {
             {/* Post Tags */}
             <div className="mt-16 pt-10 border-t border-[var(--mn-cream-dark)] flex flex-wrap items-center gap-4">
                <span className="text-[12px] text-gray-500 font-bold uppercase tracking-widest mr-2">Topics:</span>
-               {post.tags?.map((tag) => (
+               {post.tags?.map((tag: string) => (
                  <span key={tag} className="text-[11px] text-gray-600 font-bold uppercase tracking-wider px-4 py-2 bg-white border border-[var(--mn-gray-light)] hover:border-[var(--mn-burgundy)] hover:text-[var(--mn-navy)] hover:bg-[var(--mn-cream)] transition-all cursor-pointer">
                    {tag}
                  </span>
@@ -191,7 +191,7 @@ export default async function SingleArticle({ params }: PageProps) {
                 {/* Related Sidebar */}
                 <div className="space-y-6">
                    <span className="block text-[10px] uppercase tracking-[2px] text-gray-400 font-bold mb-4">Related Analysis</span>
-                   {relatedPosts.slice(0, 2).map((p) => (
+                   {relatedPosts.slice(0, 2).map((p: any) => (
                      <Link key={p.id} href={`/insights/${p.slug}`} className="group flex gap-4">
                         <div className="relative w-20 h-16 flex-shrink-0 overflow-hidden bg-gray-100">
                            <Image src={p.image} alt={p.title} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
@@ -219,7 +219,7 @@ export default async function SingleArticle({ params }: PageProps) {
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-             {relatedPosts.map((p) => (
+             {relatedPosts.map((p: any) => (
                <ArticleCard key={p.id} post={p} />
              ))}
           </div>

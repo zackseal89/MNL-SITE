@@ -28,7 +28,7 @@ export default function Navbar() {
       </Link>
 
       <ul className="nav-links hidden md:flex gap-[36px]">
-        {['Home', 'Practice Areas', 'About', 'Our Team', 'Insights', 'Contact'].map((item) => (
+        {['Home', 'Practice Areas', 'About', 'Our Team', 'Insights', 'Contact'].map((item: string) => (
           <li key={item}>
             <Link 
               href={item === 'Home' ? '/' : (item === 'Insights' ? '/insights' : `/#${item.toLowerCase().replace(' ', '-')}`)}
@@ -62,7 +62,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Placeholder */}
       <div className={`fixed inset-0 bg-[var(--mn-navy-deep)] transition-transform duration-500 ease-[var(--ease-expo)] md:hidden flex flex-col items-center justify-center gap-8 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-         {['Home', 'Practice Areas', 'About', 'Our Team', 'Insights', 'Contact'].map((item) => (
+         {['Home', 'Practice Areas', 'About', 'Our Team', 'Insights', 'Contact'].map((item: string) => (
            <Link 
              key={item} 
              href={item === 'Home' ? '/' : (item === 'Insights' ? '/insights' : `/#${item.toLowerCase().replace(' ', '-')}`)}

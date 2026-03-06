@@ -52,8 +52,7 @@ export default function TOC() {
     <div className="bg-[var(--mn-cream)] border-l-4 border-l-[var(--mn-burgundy)] p-8">
       <span className="block text-[10px] uppercase tracking-[2.5px] text-[var(--mn-burgundy)] font-bold mb-6">Contents</span>
       <ul className="space-y-4">
-        {headings.map((heading) => (
-          <li 
+        {headings.map((heading: any) => (          <li 
             key={heading.id} 
             className={`${heading.level === 3 ? 'ml-4' : ''}`}
           >

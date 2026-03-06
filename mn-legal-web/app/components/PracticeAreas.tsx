@@ -81,7 +81,7 @@ export default function PracticeAreas() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-[rgba(139,28,63,0.1)] border border-[rgba(139,28,63,0.1)]">
-          {practices.map((practice) => (
+          {practices.map((practice: any) => (
             <div
               key={practice.id}
               className="practice-card bg-white p-10 md:p-12 hover:bg-[#fafaf9] transition-all duration-400 group relative overflow-hidden"

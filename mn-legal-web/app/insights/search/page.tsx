@@ -37,8 +37,7 @@ export default async function SearchResultsPage({ searchParams }: SearchPageProp
         <div className="max-w-[1400px] mx-auto">
           {results.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-[var(--mn-burgundy)]/10">
-              {results.map((post) => (
-                <ArticleCard key={post.id} post={post} />
+              {results.map((post: any) => (                <ArticleCard key={post.id} post={post} />
               ))}
             </div>
           ) : (

@@ -24,7 +24,7 @@ export default function CategoryFilter({ activeCategory, onCategoryChange, count
   return (
     <div id="cat-bar" role="navigation" aria-label="Article categories" className="sticky top-[72px] z-[100] bg-white border-b border-[var(--mn-cream-dark)] overflow-x-auto no-scrollbar scroll-smooth">
       <div className="cat-inner flex gap-0 px-[60px] md:px-[60px] px-[24px] min-w-max">
-        {categories.map((cat) => (
+        {categories.map((cat: string) => (
           <button
             key={cat}
             onClick={() => onCategoryChange(cat)}
