@@ -1,17 +1,46 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const SLIDE_IMAGES = [
+  {
+    url: 'https://mnlegal.net/wp-content/uploads/2024/01/MN-Legal-Representation.jpg',
+    alt: 'MN Legal advocates in representation',
+    caption: 'MN Advocates LLP'
+  },
+  {
+    url: 'https://mnlegal.net/wp-content/uploads/2026/03/hero-nairobi-skyline.png',
+    alt: 'Nairobi Central Business District skyline',
+    caption: "Nairobi's Legal Centre"
+  },
+  {
+    url: 'https://mnlegal.net/wp-content/uploads/2026/03/hero-law-courts.png',
+    alt: 'High Court of Kenya, Nairobi',
+    caption: 'High Court of Kenya'
+  },
+  {
+    url: 'https://mnlegal.net/wp-content/uploads/2026/03/hero-boardroom.png',
+    alt: 'MN Legal corporate boardroom, Nairobi',
+    caption: 'The MN Legal Boardroom'
+  }
+];
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
   const circle1Ref = useRef<HTMLDivElement>(null);
   const circle2Ref = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  // ADDED: slideshow state
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [prevSlide, setPrevSlide] = useState<number | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -61,16 +90,60 @@ export default function Hero() {
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, duration: 0.8, stagger: 0.1 },
           '-=0.4'
+        )
+        // ADDED: slideshow
+        .fromTo(
+          '.slide-dots',
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8 },
+          '-=0.4'
         );
     }, heroRef);
 
     return () => ctx.revert();
   }, []);
 
+  // ADDED: slideshow logic
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      setPrevSlide(currentSlide);
+      setCurrentSlide((prev) => (prev + 1) % SLIDE_IMAGES.length);
+      
+      // Clear prevSlide class after transition
+      setTimeout(() => {
+        setPrevSlide(null);
+      }, 1700);
+    }, 5500);
+
+    return () => clearInterval(timer);
+  }, [currentSlide, isPaused]);
+
+  const goToSlide = (idx: number) => {
+    if (idx === currentSlide) return;
+    setPrevSlide(currentSlide);
+    setCurrentSlide(idx);
+    setTimeout(() => {
+      setPrevSlide(null);
+    }, 1700);
+  };
+
+  // ADDED: Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') goToSlide((currentSlide + 1) % SLIDE_IMAGES.length);
+      if (e.key === 'ArrowLeft') goToSlide((currentSlide - 1 + SLIDE_IMAGES.length) % SLIDE_IMAGES.length);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentSlide]);
+
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center px-6 md:px-16 overflow-hidden bg-[linear-gradient(135deg,#1a2744_0%,#2d3e5f_50%,#1a2744_100%)] text-white pt-20"
+      /* MODIFIED: two-column hero */
+      className="relative min-h-screen grid grid-cols-1 lg:grid-cols-2 items-center px-6 md:px-16 overflow-hidden bg-[linear-gradient(135deg,#1a2744_0%,#2d3e5f_50%,#1a2744_100%)] text-white pt-20 hero-grid"
     >
       {/* Decorative Circles */}
       <div
@@ -85,7 +158,8 @@ export default function Hero() {
       {/* Grid Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(139,28,63,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,28,63,0.03)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%,black_40%,transparent_100%)] pointer-events-none"></div>
 
-      <div className="relative z-10 max-w-[1000px] w-full" ref={contentRef}>
+      {/* MODIFIED: two-column hero */}
+      <div className="hero-left relative z-10 max-w-[600px] w-full py-20 lg:py-0" ref={contentRef}>
         <div className="hero-tag inline-block bg-[rgba(139,28,63,0.1)] border border-[rgba(139,28,63,0.4)] px-4 py-1.5 mb-6 text-[11px] font-semibold tracking-[0.2em] text-[var(--mn-cream)] uppercase">
           Advocates & Solicitors
         </div>
@@ -114,6 +188,54 @@ export default function Hero() {
           >
             Our Practice Areas
           </Link>
+        </div>
+
+        {/* ADDED: slideshow dots */}
+        <div className="slide-dots" id="slide-dots">
+          {SLIDE_IMAGES.map((_, idx) => (
+            <div 
+              key={idx}
+              className={`dot cursor-pointer ${currentSlide === idx ? 'active' : ''}`}
+              onClick={() => goToSlide(idx)}
+            ></div>
+          ))}
+        </div>
+      </div>
+
+      {/* ADDED: slideshow column */}
+      <div className="hero-right hidden lg:flex" aria-hidden="true">
+        <div 
+          className="img-stage" 
+          id="img-stage"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {SLIDE_IMAGES.map((slide, idx) => (
+            <div 
+              key={idx}
+              className={`img-slide ${currentSlide === idx ? 'active' : ''} ${prevSlide === idx ? 'prev' : ''}`}
+              id={`slide-${idx}`}
+            >
+              <img
+                src={slide.url}
+                alt={slide.alt}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                  (e.target as HTMLImageElement).parentElement!.style.background = 'linear-gradient(160deg,#1a2744,#2d3e5f)';
+                }}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="slide-caption">
+          <div className="cap-num" id="cap-num">
+            {String(currentSlide + 1).padStart(2, '0')} / {String(SLIDE_IMAGES.length).padStart(2, '0')}
+          </div>
+          <div className="cap-text" id="cap-text" style={{ opacity: prevSlide !== null ? 0 : 1 }}>
+            {SLIDE_IMAGES[currentSlide].caption}
+          </div>
         </div>
       </div>
     </section>

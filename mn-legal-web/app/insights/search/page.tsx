@@ -7,17 +7,19 @@ import ArticleCard from '@/app/components/ArticleCard';
 import { getAllPosts } from '@/lib/wp';
 import { mapWPPostToPost } from '@/lib/mapper';
 import Link from 'next/link';
+import { Post } from '@/lib/blog';
 
 interface SearchPageProps {
-  searchParams: { q?: string };
+  searchParams: Promise<{ q?: string }>;
 }
 
 export default async function SearchResultsPage({ searchParams }: SearchPageProps) {
-  const query = searchParams.q || '';
+  const resolvedSearchParams = await searchParams;
+  const query = resolvedSearchParams.q || '';
   const wpPosts = await getAllPosts();
-  const allPosts = wpPosts?.map(mapWPPostToPost) || [];
+  const allPosts: Post[] = wpPosts?.map(mapWPPostToPost) || [];
 
-  const results = allPosts.filter((post: any) => 
+  const results = allPosts.filter((post: Post) => 
     post.title.toLowerCase().includes(query.toLowerCase()) ||
     post.excerpt.toLowerCase().includes(query.toLowerCase()) ||
     post.content?.toLowerCase().includes(query.toLowerCase())
@@ -37,7 +39,7 @@ export default async function SearchResultsPage({ searchParams }: SearchPageProp
         <div className="max-w-[1400px] mx-auto">
           {results.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-[var(--mn-burgundy)]/10">
-              {results.map((post: any) => (                <ArticleCard key={post.id} post={post} />
+              {results.map((post: Post) => (                <ArticleCard key={post.id} post={post} />
               ))}
             </div>
           ) : (

@@ -15,15 +15,22 @@ interface InsightsContentProps {
 export default function InsightsContent({ posts }: InsightsContentProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [activeCategory, setActiveCategory] = useState(searchParams.get('category') || 'All Articles');
+  
+  // Stabilize activeCategory for hydration: start with 'All Articles' 
+  // and sync with searchParams in a useEffect.
+  const [activeCategory, setActiveCategory] = useState('All Articles');
   const [isFiltering, setIsFiltering] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Sync state with URL
+  // Sync state with URL after mount to avoid hydration mismatch
   useEffect(() => {
     const cat = searchParams.get('category') || 'All Articles';
     if (cat !== activeCategory) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveCategory(cat);
     }
+    setMounted(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const handleCategoryChange = (category: string) => {

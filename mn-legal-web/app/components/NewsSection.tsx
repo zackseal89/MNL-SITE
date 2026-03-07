@@ -1,11 +1,18 @@
-'use client';
-
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { posts } from '@/lib/blog';
+import { getAllPosts } from '@/lib/wp';
+import { mapWPPostToPost } from '@/lib/mapper';
+import { Post } from '@/lib/blog';
 
-export default function NewsSection() {
-  const latestPosts = posts.slice(0, 3);
+export default async function NewsSection() {
+  const wpPosts = await getAllPosts();
+  const allPosts: Post[] = wpPosts?.map(mapWPPostToPost) || [];
+  
+  if (allPosts.length === 0) {
+    return null; // Or show a placeholder if desired
+  }
+
+  const latestPosts = allPosts.slice(0, 3);
   const featured = latestPosts[0];
 
   return (
@@ -30,7 +37,7 @@ export default function NewsSection() {
           <div className="lg:col-span-2 group">
             <Link href={`/insights/${featured.slug}`} className="block h-full bg-white transition-all duration-500 hover:shadow-2xl">
               <div className="relative aspect-[16/9] overflow-hidden">
-                <img src={featured.image} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt="" />
+                <img src={featured.image} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt={featured.title} />
                 <div className="absolute top-6 left-6 bg-[var(--mn-burgundy)] px-4 py-1 text-[11px] font-bold text-white uppercase tracking-wider">
                   {featured.category}
                 </div>
@@ -55,7 +62,7 @@ export default function NewsSection() {
             {latestPosts.slice(1).map((post, i) => (
               <Link key={i} href={`/insights/${post.slug}`} className="group block">
                 <div className="relative aspect-[16/8] overflow-hidden mb-6">
-                   <img src={post.image} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt="" />
+                   <img src={post.image} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt={post.title} />
                 </div>
                 <div>
                    <span className="block text-[11px] font-bold text-[var(--mn-burgundy)] uppercase tracking-wider mb-2">{post.category}</span>

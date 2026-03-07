@@ -11,7 +11,7 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ post, delayClass = "d1" }: ArticleCardProps) {
   return (
-    <article className={`art-card rv ${delayClass} bg-white overflow-hidden flex flex-col transition-[transform,opacity] duration-400 ease-[var(--ease-expo)] hover:-translate-y-1`}>
+    <article className={`group art-card rv ${delayClass} bg-white overflow-hidden flex flex-col transition-[transform,opacity] duration-400 ease-[var(--ease-expo)] hover:-translate-y-1`}>
       <Link href={`/insights/${post.slug}`} className="block h-full flex flex-col no-underline color-inherit">
         <div className="art-card-img relative overflow-hidden bg-[linear-gradient(160deg,#e8e4dc,#f0ece4)] aspect-[16/9]">
           <div className="art-card-img-inner w-full h-full flex items-center justify-center font-display text-[40px] text-black/5 italic transition-transform duration-600 ease-[var(--ease-expo)] group-hover:scale-[1.05]">

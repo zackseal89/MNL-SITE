@@ -3,18 +3,29 @@ const API_URL = process.env.WORDPRESS_API_URL;
 async function fetchAPI(query: string, { variables }: any = {}) {
   const headers = { 'Content-Type': 'application/json' };
 
-  const res = await fetch(API_URL!, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({ query, variables }),
-  });
-
-  const json = await res.json();
-  if (json.errors) {
-    console.error(json.errors);
-    throw new Error('Failed to fetch API');
+  if (!API_URL) {
+    console.warn('WORDPRESS_API_URL is not defined in environment variables. Returning empty data.');
+    return { data: {} };
   }
-  return json.data;
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ query, variables }),
+      next: { revalidate: 60 } // Adding revalidation for ISR
+    });
+
+    const json = await res.json();
+    if (json.errors) {
+      console.error(json.errors);
+      throw new Error('Failed to fetch API');
+    }
+    return json.data;
+  } catch (error) {
+    console.error('Error fetching from WordPress API:', error);
+    return null; 
+  }
 }
 
 export async function getAllPosts() {
@@ -26,6 +37,7 @@ export async function getAllPosts() {
           slug
           title
           excerpt
+          content
           date
           featuredImage {
             node {
@@ -55,7 +67,7 @@ export async function getAllPosts() {
       }
     }
   `);
-  return data?.posts?.nodes;
+  return data?.posts?.nodes || [];
 }
 
 export async function getPostBySlug(slug: string) {

@@ -28,6 +28,7 @@ export default function TOC() {
       };
     });
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHeadings(headingData);
 
     const observer = new IntersectionObserver(

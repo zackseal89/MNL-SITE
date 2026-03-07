@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize safely for build time
+const resendKey = process.env.RESEND_API_KEY || 're_123'; 
+const resend = new Resend(resendKey);
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,6 +17,12 @@ export async function POST(req: NextRequest) {
 
     if (!fullName || !email || !matterType || !summary) {
       return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
+    }
+
+    // Check for API key at runtime before sending
+    if (!process.env.RESEND_API_KEY) {
+        console.error('RESEND_API_KEY is missing in environment variables');
+        return NextResponse.json({ error: 'Server configuration error.' }, { status: 500 });
     }
 
     // ── SEND EMAIL ──
@@ -81,6 +89,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, data }, { status: 200 });
   } catch (err) {
+    console.error(err);
     return NextResponse.json({ error: 'Internal server error.' }, { status: 500 });
   }
 }
