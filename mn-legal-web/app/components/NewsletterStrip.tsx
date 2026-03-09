@@ -25,7 +25,7 @@ export default function NewsletterStrip() {
         <div className="rvl d1">
           <div className="nl-tag inline-flex items-center gap-[10px] text-[10px] font-medium tracking-[3px] uppercase text-white/55 mb-[16px]">MN Legal Updates</div>
           <h3 className="nl-title font-display text-[clamp(22px,3vw,32px)] font-medium italic text-white leading-[1.25] mb-[14px]">Stay Informed on Kenyan Law</h3>
-          <p className="nl-sub text-[14px] leading-[1.7] text-white/60 mb-[4px]">Join 2,400+ legal professionals receiving our monthly analysis on Kenyan and East African law — delivered to your inbox.</p>
+          <p className="nl-sub text-[14px] leading-[1.7] text-white/60 mb-[4px]">Join 2,400+ legal professionals receiving our monthly analysis on Kenyan and East African law - delivered to your inbox.</p>
           <p className="nl-trust text-[11px] text-white/35 mt-[12px]">No spam. Unsubscribe at any time.</p>
         </div>
         <div className="rvr d2">

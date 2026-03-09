@@ -18,7 +18,7 @@ export default async function InsightsPage() {
       
       <BlogHero 
         title="Thought Leadership<br>from MN Advocates LLP"
-        subtitle="Analysis, commentary, and practical guidance on Kenyan law and the East African legal landscape — from our senior advocates."
+        subtitle="Analysis, commentary, and practical guidance on Kenyan law and the East African legal landscape - from our senior advocates."
       />
       
       <Suspense fallback={

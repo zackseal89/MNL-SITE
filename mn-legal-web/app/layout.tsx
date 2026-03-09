@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MN Legal — MN Advocates LLP",
+  title: "MN Legal - MN Advocates LLP",
   description: "A cinematic, premium law firm website for MN Legal based in Nairobi, Kenya.",
 };
 

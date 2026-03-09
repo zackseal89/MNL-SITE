@@ -64,7 +64,7 @@ export default function BlogHero({ title, subtitle }: BlogHeroProps) {
             type="search" 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search articles — Companies Act, Property, Litigation…" 
+            placeholder="Search articles - Companies Act, Property, Litigation…" 
             className="flex-1 bg-[rgba(255,255,255,.08)] border border-[rgba(255,255,255,.18)] border-r-0 p-[13px_20px] font-body text-[14px] text-white outline-none transition-all focus:bg-[rgba(255,255,255,.13)] focus:border-[rgba(139,28,63,.6)] placeholder:text-white/35"
           />
           <button type="submit" className="bg-[var(--mn-burgundy)] border border-[var(--mn-burgundy)] p-[13px_20px] text-white text-[15px] hover:bg-[var(--mn-burgundy-dark)] transition-colors">

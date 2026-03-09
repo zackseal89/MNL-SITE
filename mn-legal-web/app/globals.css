@@ -229,7 +229,7 @@ body {
 }
 
 /* ═══════════════════════════════════════════
-   HERO IMAGE SLIDESHOW — ADDED
+   HERO IMAGE SLIDESHOW - ADDED
 ═══════════════════════════════════════════ */
 
 /* Right column wrapper */
@@ -247,10 +247,10 @@ body {
   THE IMAGE STAGE
   ───────────────
   clip-path creates the organic arch shape:
-    - Left edge: curved inward — blends into the navy background
+    - Left edge: curved inward - blends into the navy background
     - Right edge: fully open rectangle
   The left ~20% of the image is clipped away where it meets the
-  navy gradient, creating a seamless organic merge — no box edges.
+  navy gradient, creating a seamless organic merge - no box edges.
 */
 .img-stage {
   position: relative;
@@ -278,7 +278,7 @@ body {
   This is the key effect: fades the image FROM solid navy (#1a2744)
   on the far left TO transparent at 48% across.
   Result: the image appears to "grow organically" out of the
-  hero background — no visible seam, no hard border.
+  hero background - no visible seam, no hard border.
 */
 .img-stage::before {
   content: '';
@@ -296,7 +296,7 @@ body {
   pointer-events: none;
 }
 
-/* Top and bottom dark vignette — grounds the image in the hero */
+/* Top and bottom dark vignette - grounds the image in the hero */
 .img-stage::after {
   content: '';
   position: absolute;
@@ -312,7 +312,7 @@ body {
   pointer-events: none;
 }
 
-/* Each individual slide — stacked absolutely, all same size */
+/* Each individual slide - stacked absolutely, all same size */
 .img-slide {
   position: absolute;
   inset: 0;
@@ -326,19 +326,19 @@ body {
   will-change: opacity, transform;
 }
 
-/* Active slide — visible, Ken Burns zoom begins */
+/* Active slide - visible, Ken Burns zoom begins */
 .img-slide.active {
   opacity: 1;
   transform: scale(1.0);
 }
 
-/* Exiting slide — fades out */
+/* Exiting slide - fades out */
 .img-slide.prev {
   opacity: 0;
   transform: scale(1.02);
 }
 
-/* Slide dots — positioned relative to the content */
+/* Slide dots - positioned relative to the content */
 .slide-dots {
   display: flex;
   gap: 10px;
@@ -360,7 +360,7 @@ body {
   transform: scale(1.5);
 }
 
-/* Slide caption — bottom right corner, above the stats strip */
+/* Slide caption - bottom right corner, above the stats strip */
 .slide-caption {
   position: absolute;
   bottom: 100px;
@@ -393,7 +393,7 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Accessibility — disable motion for users who prefer it */
+/* Accessibility - disable motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   .img-slide {
     transform: scale(1) !important;
@@ -403,7 +403,7 @@ body {
 
 /* ── RESPONSIVE BREAKPOINTS ── */
 
-/* Tablet and below — single column, hide image */
+/* Tablet and below - single column, hide image */
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr !important;
@@ -418,7 +418,7 @@ body {
   }
 }
 
-/* Mobile — stack stats 2×2 */
+/* Mobile - stack stats 2×2 */
 @media (max-width: 640px) {
   .hero-grid { padding: 0 24px; }
 }

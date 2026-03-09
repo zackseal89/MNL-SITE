@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
       from: 'MN Legal Portal <onboarding@resend.dev>',
       // NOTE: In Resend Trial Mode, this MUST be the email you used to sign up for Resend.
       to: ['info@mnlegal.net'], 
-      subject: `CONSULTATION INQUIRY: ${matterType.toUpperCase()} — ${fullName.toUpperCase()}`,
+      subject: `CONSULTATION INQUIRY: ${matterType.toUpperCase()} - ${fullName.toUpperCase()}`,
       replyTo: email,
       html: `
         <!DOCTYPE html>
@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
                 </div>
               </div>
               <div class="footer">
-                Privileged & Confidential — Generated via MN Legal Portal
+                Privileged & Confidential - Generated via MN Legal Portal
               </div>
             </div>
           </body>

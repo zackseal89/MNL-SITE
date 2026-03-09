@@ -7,10 +7,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { label: 'Years of Excellence', value: 25, suffix: '+' },
+  { label: 'Years of Excellence', value: 7, suffix: '+' },
   { label: 'Cases Resolved', value: 500, suffix: '+' },
   { label: 'Legal Professionals', value: 15, suffix: '' },
-  { label: 'Offices in Kenya', value: 2, suffix: '' },
+  { label: 'Offices in Kenya', value: 1, suffix: '' },
 ];
 
 export default function AboutSection() {
@@ -60,7 +60,7 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           <div>
             <span className="about-reveal text-[var(--mn-burgundy)] text-[11px] font-semibold uppercase tracking-[0.2em] mb-4 block">
-              EST. — NAIROBI
+              EST. - NAIROBI
             </span>
             <h2 className="about-reveal text-[clamp(32px,4vw,42px)] font-display text-white leading-tight mb-8 border-none p-0">
               A Legacy of Precision <br /> and Legal Authority

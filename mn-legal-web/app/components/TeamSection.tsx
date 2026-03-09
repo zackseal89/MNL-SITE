@@ -47,20 +47,32 @@ export default function TeamSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.team-card', {
-        opacity: 0,
-        y: 60,
-        duration: 1.2,
-        stagger: 0.15,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-        },
-      });
+      gsap.fromTo('.team-card', 
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
     }, containerRef);
 
-    return () => ctx.revert();
+    // Refresh ScrollTrigger after a short delay to account for any layout shifts
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => {
+      ctx.revert();
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
