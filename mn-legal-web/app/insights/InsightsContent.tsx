@@ -89,10 +89,17 @@ export default function InsightsContent({ posts }: InsightsContentProps) {
         {/* ── LATEST ARTICLES ── */}
         <div className={`art-section p-[64px_0_0] transition-opacity duration-300 ${isFiltering ? 'opacity-0' : 'opacity-100'}`}>
           <div className="flex items-baseline justify-between flex-wrap gap-[16px]">
-            <h2 className="grid-heading rv font-display text-[clamp(22px,3vw,30px)] font-semibold text-[var(--mn-navy)] pb-[12px] border-b-2 border-[var(--mn-burgundy)] inline-block mb-[40px]">
+            <h2
+              suppressHydrationWarning
+              className="grid-heading font-display text-[clamp(22px,3vw,30px)] font-semibold text-[var(--mn-navy)] pb-[12px] border-b-2 border-[var(--mn-burgundy)] inline-block mb-[40px]"
+            >
               {activeCategory === 'All Articles' ? 'Latest Articles' : `${activeCategory} Updates`}
             </h2>
-            <span className="rv d1 text-[12px] text-[var(--text-secondary)]" id="results-count">
+            <span
+              suppressHydrationWarning
+              className="d1 text-[12px] text-[var(--text-secondary)]"
+              id="results-count"
+            >
               Showing {filteredPosts.length} article{filteredPosts.length !== 1 ? 's' : ''}
             </span>
           </div>

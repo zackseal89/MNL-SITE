@@ -10,8 +10,8 @@ export interface TeamMember {
 export const teamMembers: TeamMember[] = [
   {
     name: 'Mbula Nzuki',
-    title: 'Managing Partner, Principal Attorney',
-    practice: 'Corporate & Commercial Strategy',
+    title: 'Founder & Managing Partner',
+    practice: 'Corporate Commercial Law and International Business Strategy',
     image: 'https://mnlegal.net/wp-content/uploads/2024/01/Mbula-Nzuki-team.jpg',
   },
   {
@@ -28,14 +28,14 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: 'Konstantina Zariou',
-    title: 'Of - Counsel',
-    practice: 'Legal Advisory',
+    title: 'Of Counsel - London 🇬🇧',
+    practice: 'Maritime and Commercial Law + International Arbitration',
     image: 'https://mnlegal.net/wp-content/uploads/2026/01/IMG_8790.jpeg',
   },
   {
     name: 'Husna (A.) Mohammed',
     title: 'Senior Associate',
-    practice: 'Corporate Law',
+    practice: 'Corporate Commercial + Real Estate Law',
     image: 'https://mnlegal.net/wp-content/uploads/2026/03/1771405050567.jpg',
   },
   {
@@ -46,8 +46,8 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: 'Nour Sheriff',
-    title: 'Legal Research Assistant',
-    practice: 'Legal Research & Analysis',
+    title: 'Associate',
+    practice: 'Commercial Law & International Arbitration',
     image: 'https://mnlegal.net/wp-content/uploads/2024/01/Nour-Sheriff.jpg',
   },
 ];

@@ -55,15 +55,20 @@ export default function UIExtras() {
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     const setupReveals = () => {
-      document.querySelectorAll('.rv, .rvl, .rvr').forEach((el: any) => revealObserver.observe(el));
+      document.querySelectorAll('.rv, .rvl, .rvr').forEach((el: any) => {
+        revealObserver.observe(el);
+      });
     };
 
-    // Initial setup
-    setupReveals();
+    // Use requestAnimationFrame to run after React finishes its initial hydration/paint cycle
+    let rafId: number;
+    let mutationObserver: MutationObserver | null = null;
     
-    // Watch for DOM changes (important for client-side filtering)
-    const mutationObserver = new MutationObserver(setupReveals);
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
+    rafId = requestAnimationFrame(() => {
+      setupReveals();
+      mutationObserver = new MutationObserver(setupReveals);
+      mutationObserver.observe(document.body, { childList: true, subtree: true });
+    });
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
@@ -81,11 +86,12 @@ export default function UIExtras() {
 
     return () => {
       clearTimeout(overlayTimer);
+      cancelAnimationFrame(rafId);
+      mutationObserver?.disconnect();
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
       revealObserver.disconnect();
-      mutationObserver.disconnect();
       cancelAnimationFrame(requestRef);
     };
   }, []);

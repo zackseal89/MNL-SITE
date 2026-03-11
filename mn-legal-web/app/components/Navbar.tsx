@@ -5,6 +5,15 @@ import Link from 'next/link';
 
 import Image from 'next/image';
 
+const navLinks = [
+  { label: 'Home',           href: '/' },
+  { label: 'Practice Areas', href: '/#practice' },
+  { label: 'About',          href: '/#about' },
+  { label: 'Our Team',       href: '/#team' },
+  { label: 'Insights',       href: '/insights' },
+  { label: 'Contact',        href: '/#contact' },
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -24,26 +33,28 @@ export default function Navbar() {
         scrolled ? 'p-[12px_60px] bg-[rgba(26,39,68,0.98)] backdrop-blur-[20px] border-b border-[rgba(139,28,63,0.14)]' : 'p-[20px_60px] bg-transparent'
       }`}
     >
-      <Link href="/" className="nav-brand relative w-[180px] h-[45px] transition-transform duration-500 hover:scale-105">
-        <Image 
-          src="https://mnlegal.net/wp-content/uploads/2021/08/MNL-ADVOCATES-LLP-MN-LEGAL-negative.svg" 
-          alt="MN Legal - MN Advocates LLP"
-          fill
-          className="object-contain object-left"
-          priority
-        />
+      <Link href="/" className="nav-brand relative transition-transform duration-500 hover:scale-105">
+        <div className="relative w-[220px] h-[50px] bg-white rounded-[6px] px-[10px] py-[6px]">
+          <Image 
+            src="https://mnlegal.net/wp-content/uploads/2021/11/MNL-ADVOCATES-LLP-MN-LEGAL-x2.png" 
+            alt="MN Legal - MN Advocates LLP"
+            fill
+            className="object-contain object-center"
+            priority
+          />
+        </div>
       </Link>
 
       <ul className="nav-links hidden md:flex gap-[36px]">
-        {['Home', 'Practice Areas', 'About', 'Our Team', 'Insights', 'Contact'].map((item: string) => (
-          <li key={item}>
+        {navLinks.map(({ label, href }) => (
+          <li key={label}>
             <Link 
-              href={item === 'Home' ? '/' : (item === 'Insights' ? '/insights' : `/#${item.toLowerCase().replace(' ', '-')}`)}
+              href={href}
               className={`text-[11px] font-medium tracking-[1.2px] uppercase transition-colors duration-300 relative pb-[4px] after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-[var(--mn-burgundy)] after:transition-all after:duration-400 after:ease-[var(--ease-expo)] ${
-                item === 'Insights' ? 'text-white after:w-full' : 'text-white/60 hover:text-white after:w-0 hover:after:w-full'
+                label === 'Insights' ? 'text-white after:w-full' : 'text-white/60 hover:text-white after:w-0 hover:after:w-full'
               }`}
             >
-              {item}
+              {label}
             </Link>
           </li>
         ))}
@@ -67,16 +78,16 @@ export default function Navbar() {
         <span className={`block w-[22px] h-[1.5px] bg-white transition-all duration-400 ease-[var(--ease-expo)] ${isOpen ? 'translate-y-[-6.5px] -rotate-45' : ''}`}></span>
       </button>
 
-      {/* Mobile Menu Placeholder */}
+      {/* Mobile Menu */}
       <div className={`fixed inset-0 bg-[var(--mn-navy-deep)] transition-transform duration-500 ease-[var(--ease-expo)] md:hidden flex flex-col items-center justify-center gap-8 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-         {['Home', 'Practice Areas', 'About', 'Our Team', 'Insights', 'Contact'].map((item: string) => (
+         {navLinks.map(({ label, href }) => (
            <Link 
-             key={item} 
-             href={item === 'Home' ? '/' : (item === 'Insights' ? '/insights' : `/#${item.toLowerCase().replace(' ', '-')}`)}
+             key={label} 
+             href={href}
              className="text-white text-xl uppercase tracking-widest font-display italic"
              onClick={() => setIsOpen(false)}
            >
-             {item}
+             {label}
            </Link>
          ))}
       </div>

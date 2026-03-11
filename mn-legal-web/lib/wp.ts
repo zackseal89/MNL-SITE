@@ -1,12 +1,7 @@
-const API_URL = process.env.WORDPRESS_API_URL;
+const API_URL = process.env.WORDPRESS_API_URL || 'https://mnlegal.net/graphql';
 
 async function fetchAPI(query: string, { variables }: any = {}) {
   const headers = { 'Content-Type': 'application/json' };
-
-  if (!API_URL) {
-    console.warn('WORDPRESS_API_URL is not defined in environment variables. Returning empty data.');
-    return { data: {} };
-  }
 
   try {
     const res = await fetch(API_URL, {

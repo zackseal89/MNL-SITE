@@ -166,10 +166,13 @@ export default function Hero() {
         
         <div className="hero-divider w-24 h-[3px] bg-[var(--mn-burgundy)] mb-8"></div>
         
-        <h1 className="hero-h1 font-display italic text-[clamp(42px,6vw,72px)] leading-[1.1] mb-8 font-medium">
-          Precision. Counsel. <br className="hidden md:block" />
-          <span className="text-[var(--mn-cream)]">Resolve.</span>
+        <h1 className="hero-h1 font-display text-[clamp(32px,5vw,62px)] leading-[1.1] mb-3 font-bold uppercase tracking-wide">
+          Your Creative, Innovative <br className="hidden md:block" />
+          <span className="text-[var(--mn-cream)]">Legal Partner</span>
         </h1>
+        <p className="font-display italic text-[clamp(15px,1.8vw,22px)] text-white/70 mb-8 tracking-widest">
+          local expertise · global talent
+        </p>
         
         <p className="hero-sub font-body text-[18px] md:text-[20px] text-white max-w-[600px] leading-relaxed mb-12 drop-shadow-sm font-medium">
           MN Legal is a premier law firm in Nairobi, providing sophisticated legal solutions for complex commercial and dispute resolution matters across East Africa.

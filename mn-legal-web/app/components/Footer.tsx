@@ -12,12 +12,12 @@ export default function Footer() {
           <Link href="/" className="foot-brand relative block w-[200px] h-[50px] mb-6">
             <Image 
               src="https://mnlegal.net/wp-content/uploads/2021/08/MNL-ADVOCATES-LLP-MN-LEGAL-negative.svg" 
-              alt="MN Legal"
+              alt="MN Legal – MN Advocates LLP"
               fill
               className="object-contain object-left"
             />
           </Link>
-          <p className="foot-tagline text-[13px] leading-[1.7] text-white/40 max-w-[260px] mb-[24px]">Precision. Counsel. Resolve. - Serving Kenya and East Africa from Nairobi.</p>
+          <p className="foot-tagline text-[13px] leading-[1.7] text-white/40 max-w-[260px] mb-[24px]">Your creative, innovative legal partner — <em>local expertise · global talent</em>. Serving Kenya and East Africa from Nairobi.</p>
           <div className="foot-social flex gap-[10px]">
             {['𝕏', 'in', '✉'].map((icon, i) => (
               <a 

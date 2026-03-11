@@ -11,10 +11,10 @@ interface FeaturedArticleProps {
 export default function FeaturedArticle({ post }: FeaturedArticleProps) {
   return (
     <div id="featured" className="p-[64px_0] border-b border-[var(--mn-cream-dark)]">
-      <div className="sec-label rv mb-[8px] inline-flex items-center gap-[12px] text-[11px] font-medium tracking-[3px] uppercase text-[var(--mn-burgundy)] before:content-[''] before:w-[24px] before:height-[1px] before:bg-[var(--mn-burgundy)]">Featured Article</div>
-      <Link href={`/insights/${post.slug}`} className="feat-grid rv d1 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-0 border border-[var(--mn-cream-dark)] overflow-hidden group no-underline color-inherit">
+      <div className="sec-label mb-[8px] inline-flex items-center gap-[12px] text-[11px] font-medium tracking-[3px] uppercase text-[var(--mn-burgundy)] before:content-[''] before:w-[24px] before:height-[1px] before:bg-[var(--mn-burgundy)]">Featured Article</div>
+      <Link href={`/insights/${post.slug}`} className="feat-grid d1 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-0 border border-[var(--mn-cream-dark)] overflow-hidden group no-underline color-inherit">
         {/* Image Area */}
-        <div className="feat-img rvl d1 relative overflow-hidden bg-[linear-gradient(160deg,#2d3e5f,#1a2744)]">
+        <div className="feat-img d1 relative overflow-hidden bg-[linear-gradient(160deg,#2d3e5f,#1a2744)]">
           <div className="feat-img-inner w-full h-full min-h-[340px] flex items-center justify-center font-display text-[80px] color-[rgba(255,255,255,.05)] italic transition-transform duration-700 ease-[var(--ease-expo)] group-hover:scale-[1.04]">
             MN
           </div>
@@ -28,7 +28,7 @@ export default function FeaturedArticle({ post }: FeaturedArticleProps) {
         </div>
 
         {/* Content Area */}
-        <div className="feat-body rvr d2 p-[52px] flex flex-col justify-center bg-white">
+        <div className="feat-body d2 p-[52px] flex flex-col justify-center bg-white">
           <span className="art-tag inline-block bg-[var(--mn-burgundy)] text-white text-[10px] font-semibold tracking-[2px] uppercase p-[5px_12px] mb-[16px]">
             {post.category}
           </span>
