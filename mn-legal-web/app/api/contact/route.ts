@@ -1,5 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { z } from 'zod';
+
+const contactFormSchema = z.object({
+  fullName: z.string().min(2, "Name is too short").max(100),
+  email: z.string().email("Invalid email address"),
+  matterType: z.enum(["Corporate & Commercial", "Litigation", "Conveyancing", "Intellectual Property", "Other"]),
+  summary: z.string().min(10, "Summary must be at least 10 characters").max(2000),
+  honeypot: z.string().optional(),
+});
 
 // Initialize safely for build time
 const resendKey = process.env.RESEND_API_KEY || 're_123'; 
@@ -8,15 +17,18 @@ const resend = new Resend(resendKey);
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { fullName, email, matterType, summary, honeypot } = body;
+    
+    // ── SERVER-SIDE VALIDATION (Zod) ──
+    const result = contactFormSchema.safeParse(body);
+    if (!result.success) {
+      return NextResponse.json({ error: result.error.errors[0].message }, { status: 400 });
+    }
+
+    const { fullName, email, matterType, summary, honeypot } = result.data;
 
     // ── SPAM PROTECTION (Honeypot) ──
     if (honeypot) {
       return NextResponse.json({ success: true }, { status: 200 });
-    }
-
-    if (!fullName || !email || !matterType || !summary) {
-      return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
     }
 
     // Check for API key at runtime before sending

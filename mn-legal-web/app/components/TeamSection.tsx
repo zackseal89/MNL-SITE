@@ -110,7 +110,7 @@ export default function TeamSection() {
               We are always looking for exceptional legal talent to join our growing firm.
             </p>
             <a 
-              href="mailto:careers@mnlegal.net" 
+              href="#contact" 
               className="text-[10px] uppercase font-bold text-[var(--mn-burgundy)] tracking-[2px] border-b border-[var(--mn-burgundy)] pb-1 hover:text-white hover:border-white transition-all duration-300"
             >
               Send Application

@@ -4,6 +4,7 @@ import PracticeAreas from './components/PracticeAreas';
 import AboutSection from './components/AboutSection';
 import TeamSection from './components/TeamSection';
 import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
 import NewsSection from './components/NewsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
@@ -19,6 +20,7 @@ export default function Home() {
       <AboutSection />
       <TeamSection />
       <Testimonials />
+      <FAQ />
       <NewsSection />
       <ContactSection />
       <Footer />

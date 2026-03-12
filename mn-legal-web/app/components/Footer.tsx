@@ -60,17 +60,43 @@ export default function Footer() {
 
         <div>
           <div className="foot-col-ttl text-[10px] font-semibold tracking-[2.5px] uppercase text-white/30 mb-[20px]">Contact</div>
-          <ul className="foot-links flex flex-col gap-[11px]">
-            <li><a href="tel:+254700325089" className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85">+254 700 325 089</a></li>
-            <li><a href="mailto:info@mnlegal.net" className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85">info@mnlegal.net</a></li>
-            <li><a href="https://mnlegal.net" className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85" target="_blank" rel="noopener">mnlegal.net</a></li>
-            <li><span className="text-[13px] text-white/35">Nairobi, Kenya</span></li>
-          </ul>
+          <address className="not-italic" itemScope itemType="http://schema.org/LegalService">
+            <ul className="foot-links flex flex-col gap-[11px]">
+              <li>
+                <a href="tel:+254700325089" itemProp="telephone" className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85">
+                  +254 700 325 089
+                </a>
+              </li>
+              <li>
+                <a href="mailto:info@mnlegal.net" itemProp="email" className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85">
+                  info@mnlegal.net
+                </a>
+              </li>
+              <li>
+                <a href="https://mnlegal.net" itemProp="url" className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85" target="_blank" rel="noopener">
+                  mnlegal.net
+                </a>
+              </li>
+              <li>
+                <div itemProp="address" itemScope itemType="http://schema.org/PostalAddress">
+                  <span itemProp="streetAddress" className="text-[13px] text-white/35 block">Nairobi, Kenya</span>
+                </div>
+              </li>
+            </ul>
+          </address>
         </div>
       </div>
 
       <div className="foot-bottom border-t border-white/5 pt-[28px] flex flex-wrap items-center justify-between gap-[12px]">
-        <p className="foot-copy text-[11px] text-white/30">© 2026 MN Advocates LLP. All rights reserved.</p>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+          <p className="foot-copy text-[11px] text-white/30">© 2026 MN Advocates LLP. All rights reserved.</p>
+          <Link href="/privacy" className="text-[11px] text-white/40 hover:text-[var(--mn-burgundy)] transition-colors duration-300 underline underline-offset-4 decoration-white/10">
+            Privacy Policy
+          </Link>
+          <Link href="/sitemap.xml" className="text-[11px] text-white/40 hover:text-[var(--mn-burgundy)] transition-colors duration-300 underline underline-offset-4 decoration-white/10">
+            Sitemap
+          </Link>
+        </div>
         <p className="foot-disc text-[11px] italic text-white/20 max-w-[560px] md:text-right text-left">The content on this website is for general information only and does not constitute legal advice. Consult a qualified advocate for advice specific to your circumstances.</p>
       </div>
     </footer>

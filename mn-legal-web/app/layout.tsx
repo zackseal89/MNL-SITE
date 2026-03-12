@@ -18,8 +18,51 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MN Legal - MN Advocates LLP",
-  description: "A cinematic, premium law firm website for MN Legal based in Nairobi, Kenya.",
+  title: {
+    template: "%s | MN Legal - Top Legal Tech Firm Kenya",
+    default: "MN Legal - Data Privacy & Corporate Law Experts Nairobi",
+  },
+  description: "MN Legal (MN Advocates LLP) is Kenya's premier Legal Tech and Data Privacy law firm. We specialize in AI Law, Corporate Commercial, and Dispute Resolution in Nairobi.",
+  keywords: ["Legal Tech Kenya", "Data Privacy Lawyers Nairobi", "AI Law Kenya", "Corporate Lawyers Nairobi", "MN Advocates LLP", "Tech Lawyers Kenya"],
+  authors: [{ name: "MN Legal" }],
+  creator: "MN Legal",
+  publisher: "MN Advocates LLP",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://mnlegal.net"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "MN Legal - Leading Legal Tech & Data Privacy Firm Kenya",
+    description: "Expert legal counsel in Data Protection, AI Governance, and Corporate Commercial Law. Based in Nairobi, serving East Africa.",
+    url: "https://mnlegal.net",
+    siteName: "MN Legal",
+    locale: "en_KE",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MN Legal - MN Advocates LLP",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MN Legal - Top Legal Tech Firm Kenya",
+    description: "Premier Data Privacy and AI Law experts in Nairobi. Precision. Counsel. Resolve.",
+    creator: "@mnlegaladvocate",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
