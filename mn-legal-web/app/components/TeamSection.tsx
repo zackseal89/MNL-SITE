@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function TeamMemberCard({ member, index }: { member: TeamMember; index: number }) {
   return (
-    <div className="team-card group bg-white p-4 transition-all duration-500 hover:shadow-2xl relative border border-transparent hover:border-[var(--mn-cream-dark)]">
+    <div className="team-card group bg-[var(--bg-primary)] p-4 transition-all duration-500 hover:shadow-2xl relative border border-transparent hover:border-[var(--mn-cream-dark)]">
       <div className="relative aspect-[4/5] mb-8 overflow-hidden bg-[var(--mn-cream)]">
         <Image
           src={member.image}
@@ -25,13 +25,13 @@ function TeamMemberCard({ member, index }: { member: TeamMember; index: number }
       </div>
       
       <div className="relative pl-5 border-l-0 group-hover:border-l-[3px] border-[var(--mn-burgundy)] transition-all duration-300 ease-out">
-        <h3 className="text-[22px] font-display text-[var(--mn-navy)] mb-1 font-semibold leading-tight group-hover:text-[var(--mn-burgundy)] transition-colors duration-300">
+        <h3 className="text-[22px] font-display text-[var(--heading-primary)] mb-1 font-semibold leading-tight group-hover:text-[var(--mn-burgundy)] transition-colors duration-300">
           {member.name}
         </h3>
         <span className="block text-[10px] uppercase text-[var(--mn-burgundy)] tracking-[2.5px] font-bold mb-3">
           {member.title}
         </span>
-        <p className="text-[13px] text-gray-500 font-medium tracking-wide">
+        <p className="text-[13px] text-[var(--text-secondary)] font-medium tracking-wide">
           {member.practice}
         </p>
       </div>
@@ -83,13 +83,13 @@ export default function TeamSection() {
             <span className="text-[var(--mn-burgundy)] text-[11px] font-semibold uppercase tracking-[0.3em] mb-4 block">
               Our Professionals
             </span>
-            <h2 className="text-[clamp(36px,5vw,52px)] font-display text-[var(--mn-navy)] leading-[1.1] mb-0">
-              The Legal Minds Behind <br />
-              <span className="italic font-medium">MN Advocates LLP</span>
+            <h2 className="text-[clamp(36px,5vw,52px)] font-display text-[var(--heading-primary)] leading-[1.1] mb-0">
+              The People Behind<br/>
+              <span className="italic text-[var(--mn-burgundy)]">MN Legal</span>
             </h2>
           </div>
           <div className="hidden lg:block pb-2">
-            <p className="text-[14px] text-gray-500 font-medium max-w-[300px] leading-relaxed italic border-l-2 border-[var(--mn-burgundy)] pl-6">
+            <p className="text-[14px] text-[var(--text-secondary)] font-medium max-w-[300px] leading-relaxed italic border-l-2 border-[var(--mn-burgundy)] pl-6">
               "Precision, excellence, and unwavering dedication to our clients' success."
             </p>
           </div>

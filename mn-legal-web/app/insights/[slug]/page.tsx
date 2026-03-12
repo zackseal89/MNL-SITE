@@ -38,7 +38,7 @@ export default async function SingleArticle({ params }: PageProps) {
     .map((p: any) => mapWPPostToPost(p));
 
   return (
-    <main className="relative bg-white">
+    <main className="relative bg-[var(--bg-primary)]">
       <UIExtras />
       <Navbar />
 
@@ -96,7 +96,7 @@ export default async function SingleArticle({ params }: PageProps) {
       </section>
 
       {/* Article Content Area */}
-      <section className="py-24 px-6 md:px-16 bg-white">
+      <section className="py-24 px-6 md:px-16 bg-[var(--bg-primary)]">
         <div className="max-w-[980px] mx-auto flex flex-col lg:flex-row gap-20">
           {/* Main Body */}
           <div className="w-full lg:w-[740px] flex-shrink-0">
@@ -105,9 +105,9 @@ export default async function SingleArticle({ params }: PageProps) {
 
             {/* Post Tags */}
             <div className="mt-16 pt-10 border-t border-[var(--mn-cream-dark)] flex flex-wrap items-center gap-4">
-               <span className="text-[12px] text-gray-500 font-bold uppercase tracking-widest mr-2">Topics:</span>
+               <span className="text-[12px] text-[var(--text-secondary)] font-bold uppercase tracking-widest mr-2">Topics:</span>
                {post.tags?.map((tag: string) => (
-                 <span key={tag} className="text-[11px] text-gray-600 font-bold uppercase tracking-wider px-4 py-2 bg-white border border-[var(--mn-gray-light)] hover:border-[var(--mn-burgundy)] hover:text-[var(--mn-navy)] hover:bg-[var(--mn-cream)] transition-all cursor-pointer">
+                 <span key={tag} className="text-[11px] text-[var(--text-secondary)] font-bold uppercase tracking-wider px-4 py-2 bg-[var(--bg-primary)] border border-[var(--mn-gray-light)] hover:border-[var(--mn-burgundy)] hover:text-[var(--heading-primary)] hover:bg-[var(--mn-cream)] transition-all cursor-pointer">
                    {tag}
                  </span>
                ))}
@@ -115,26 +115,26 @@ export default async function SingleArticle({ params }: PageProps) {
 
             {/* Social Share Row Prominent */}
             <div className="mt-12 bg-[var(--mn-cream)] p-10 flex flex-col md:flex-row items-center justify-between gap-8">
-               <span className="font-display italic text-xl text-[var(--mn-navy)]">Found this article useful? Share it.</span>
+               <span className="font-display italic text-xl text-[var(--heading-primary)]">Found this article useful? Share it.</span>
                <div className="flex gap-4">
-                  <button className="flex items-center gap-2 px-6 py-3 border-2 border-[var(--mn-navy)] text-[var(--mn-navy)] text-[11px] font-bold uppercase tracking-widest hover:bg-[var(--mn-navy)] hover:text-white transition-all duration-300 group">
+                  <button className="flex items-center gap-2 px-6 py-3 border-2 border-[var(--heading-primary)] text-[var(--heading-primary)] text-[11px] font-bold uppercase tracking-widest hover:bg-[var(--heading-primary)] hover:text-[var(--bg-primary)] transition-all duration-300 group">
                     <Twitter size={14} /> <span>Twitter</span>
                   </button>
-                  <button className="flex items-center gap-2 px-6 py-3 border-2 border-[var(--mn-navy)] text-[var(--mn-navy)] text-[11px] font-bold uppercase tracking-widest hover:bg-[var(--mn-navy)] hover:text-white transition-all duration-300 group">
+                  <button className="flex items-center gap-2 px-6 py-3 border-2 border-[var(--heading-primary)] text-[var(--heading-primary)] text-[11px] font-bold uppercase tracking-widest hover:bg-[var(--heading-primary)] hover:text-[var(--bg-primary)] transition-all duration-300 group">
                     <Linkedin size={14} /> <span>LinkedIn</span>
                   </button>
                </div>
             </div>
 
             {/* Author Bio Box */}
-            <div className="mt-12 bg-white border border-[var(--mn-cream-dark)] border-l-4 border-l-[var(--mn-burgundy)] p-10 flex flex-col md:flex-row gap-8 items-start">
+            <div className="mt-12 bg-[var(--bg-primary)] border border-[var(--mn-cream-dark)] border-l-4 border-l-[var(--mn-burgundy)] p-10 flex flex-col md:flex-row gap-8 items-start">
                <div className="relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0 bg-[var(--mn-navy)]">
                  <Image src={post.author.avatar} alt={post.author.name} fill className="object-cover" />
                </div>
                <div>
-                  <span className="block text-[22px] font-display text-[var(--mn-navy)] font-semibold mb-1">{post.author.name}</span>
+                  <span className="block text-[22px] font-display text-[var(--heading-primary)] font-semibold mb-1">{post.author.name}</span>
                   <span className="block text-[11px] uppercase tracking-[2px] text-[var(--mn-burgundy)] font-bold mb-4">{post.author.role}</span>
-                  <p className="text-[15px] text-gray-600 leading-relaxed mb-6">{post.author.bio}</p>
+                  <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed mb-6">{post.author.bio}</p>
                   <Link href={`/insights?author=${post.author.name}`} className="inline-flex items-center text-[12px] font-bold text-[var(--mn-burgundy)] uppercase tracking-[2px] hover:opacity-70 transition-opacity">
                     View all articles by {post.author.name} →
                   </Link>
@@ -163,26 +163,26 @@ export default async function SingleArticle({ params }: PageProps) {
                 <TOC />
 
                 {/* Author Card Mini */}
-                <div className="border border-[var(--mn-cream-dark)] p-8 bg-white">
+                <div className="border border-[var(--mn-cream-dark)] p-8 bg-[var(--bg-primary)]">
                    <div className="relative w-14 h-14 rounded-full overflow-hidden bg-[var(--mn-navy)] mb-4">
                       <Image src={post.author.avatar} alt={post.author.name} fill className="object-cover" />
                    </div>
-                   <span className="block text-[16px] font-display font-semibold text-[var(--mn-navy)] mb-1">{post.author.name}</span>
+                   <span className="block text-[16px] font-display font-semibold text-[var(--heading-primary)] mb-1">{post.author.name}</span>
                    <span className="block text-[10px] uppercase tracking-[2px] text-[var(--mn-burgundy)] font-bold mb-3">{post.author.role}</span>
-                   <p className="text-[13px] text-gray-500 leading-relaxed line-clamp-3">{post.author.bio}</p>
+                   <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed line-clamp-3">{post.author.bio}</p>
                 </div>
 
                 {/* Share Sidebar */}
                 <div>
                    <span className="block text-[10px] uppercase tracking-[2px] text-gray-400 font-bold mb-6">Share Article</span>
                    <div className="flex gap-3">
-                      <button className="w-9 h-9 border border-[var(--mn-navy)] flex items-center justify-center text-[var(--mn-navy)] hover:bg-[var(--mn-navy)] hover:text-white transition-all duration-300">
+                      <button className="w-9 h-9 border border-[var(--heading-primary)] flex items-center justify-center text-[var(--heading-primary)] hover:bg-[var(--heading-primary)] hover:text-[var(--bg-primary)] transition-all duration-300">
                          <Twitter size={14} />
                       </button>
-                      <button className="w-9 h-9 border border-[var(--mn-navy)] flex items-center justify-center text-[var(--mn-navy)] hover:bg-[var(--mn-navy)] hover:text-white transition-all duration-300">
+                      <button className="w-9 h-9 border border-[var(--heading-primary)] flex items-center justify-center text-[var(--heading-primary)] hover:bg-[var(--heading-primary)] hover:text-[var(--bg-primary)] transition-all duration-300">
                          <Linkedin size={14} />
                       </button>
-                      <button className="w-9 h-9 border border-[var(--mn-navy)] flex items-center justify-center text-[var(--mn-navy)] hover:bg-[var(--mn-navy)] hover:text-white transition-all duration-300">
+                      <button className="w-9 h-9 border border-[var(--heading-primary)] flex items-center justify-center text-[var(--heading-primary)] hover:bg-[var(--heading-primary)] hover:text-[var(--bg-primary)] transition-all duration-300">
                          <LinkIcon size={14} />
                       </button>
                    </div>
@@ -197,7 +197,7 @@ export default async function SingleArticle({ params }: PageProps) {
                            <Image src={p.image} alt={p.title} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                         </div>
                         <div>
-                           <h4 className="text-[13px] font-display font-semibold text-[var(--mn-navy)] leading-tight group-hover:text-[var(--mn-burgundy)] transition-colors line-clamp-2">
+                           <h4 className="text-[13px] font-display font-semibold text-[var(--heading-primary)] leading-tight group-hover:text-[var(--mn-burgundy)] transition-colors line-clamp-2">
                               {p.title}
                            </h4>
                            <span className="text-[11px] text-gray-400 uppercase tracking-wider font-bold mt-1 block">{p.date}</span>
@@ -214,7 +214,7 @@ export default async function SingleArticle({ params }: PageProps) {
       <section className="bg-[var(--mn-cream)] py-24 px-6 md:px-16">
         <div className="max-w-[1400px] mx-auto">
           <div className="mb-16">
-            <h2 className="text-[32px] font-display text-[var(--mn-navy)] border-none p-0">
+            <h2 className="text-[32px] font-display text-[var(--heading-primary)] border-none p-0">
               More from <span className="border-b-2 border-[var(--mn-burgundy)] pb-2">MN Legal</span>
             </h2>
           </div>

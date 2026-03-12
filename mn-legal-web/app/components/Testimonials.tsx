@@ -28,7 +28,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="bg-white py-24 px-6 md:px-16" ref={containerRef}>
+    <section className="bg-[var(--bg-primary)] py-24 px-6 md:px-16" ref={containerRef}>
       <div className="max-w-[1000px] mx-auto">
         <div className="testimonial-reveal border-l-4 border-[var(--mn-burgundy)] pl-10 py-4">
           <p className="font-display italic text-[24px] md:text-[32px] text-[var(--mn-navy)] leading-[1.4] mb-8">

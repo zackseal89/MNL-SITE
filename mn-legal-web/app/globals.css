@@ -16,10 +16,29 @@
   --text-secondary:   #666666;
   --text-on-navy:     rgba(255,255,255,0.88); 
   --text-on-navy-sub: rgba(255,255,255,0.62);
+  --bg-primary:       #ffffff;
+  --heading-primary:  #1a2744;
   --font-display:     'Playfair Display', Georgia, serif;
   --font-body:        'Inter', system-ui, sans-serif;
   --ease-expo:        cubic-bezier(0.16, 1, 0.3, 1);
   --ease-back:        cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dark {
+  --mn-navy:          #0b1120;
+  --mn-navy-deep:     #050812;
+  --mn-navy-mid:      #121c2e;
+  --mn-burgundy:      #9c2a4f;
+  --mn-burgundy-dark: #7a1d3c;
+  --mn-burgundy-dim:  rgba(156, 42, 79, 0.15);
+  --mn-cream:         #0b162c;
+  --mn-cream-dark:    #121d33;
+  --mn-gray:          #a1b0c0;
+  --mn-gray-light:    #2d3e5f;
+  --text-primary:     #f4f1eb;
+  --text-secondary:   #a1b0c0;
+  --bg-primary:       #060a12;
+  --heading-primary:  #f4f1eb;
 }
 
 @theme inline {
@@ -33,7 +52,7 @@
 body {
   font-family: var(--font-body);
   color: var(--text-primary);
-  background: #fff;
+  background: var(--bg-primary);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -66,7 +85,7 @@ body {
   font-family: var(--font-display);
   font-size: 28px;
   font-weight: 600;
-  color: var(--mn-navy);
+  color: var(--heading-primary);
   border-bottom: 2px solid var(--mn-burgundy);
   padding-bottom: 12px;
   margin: 56px 0 24px;
@@ -77,7 +96,7 @@ body {
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 600;
-  color: var(--mn-navy);
+  color: var(--heading-primary);
   margin: 40px 0 16px;
 }
 
@@ -110,7 +129,7 @@ body {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 22px;
-  color: var(--mn-navy);
+  color: var(--heading-primary);
   line-height: 1.5;
 }
 

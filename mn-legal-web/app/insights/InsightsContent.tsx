@@ -20,16 +20,13 @@ export default function InsightsContent({ posts }: InsightsContentProps) {
   // and sync with searchParams in a useEffect.
   const [activeCategory, setActiveCategory] = useState('All Articles');
   const [isFiltering, setIsFiltering] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
   // Sync state with URL after mount to avoid hydration mismatch
   useEffect(() => {
     const cat = searchParams.get('category') || 'All Articles';
     if (cat !== activeCategory) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveCategory(cat);
     }
-    setMounted(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
@@ -91,7 +88,7 @@ export default function InsightsContent({ posts }: InsightsContentProps) {
           <div className="flex items-baseline justify-between flex-wrap gap-[16px]">
             <h2
               suppressHydrationWarning
-              className="grid-heading font-display text-[clamp(22px,3vw,30px)] font-semibold text-[var(--mn-navy)] pb-[12px] border-b-2 border-[var(--mn-burgundy)] inline-block mb-[40px]"
+              className="grid-heading font-display text-[clamp(22px,3vw,30px)] font-semibold text-[var(--heading-primary)] pb-[12px] border-b-2 border-[var(--mn-burgundy)] inline-block mb-[40px]"
             >
               {activeCategory === 'All Articles' ? 'Latest Articles' : `${activeCategory} Updates`}
             </h2>
@@ -119,7 +116,7 @@ export default function InsightsContent({ posts }: InsightsContentProps) {
               {/* Remaining Rows */}
               {gridRows.slice(1).map((row, rowIndex) => (
                 <div key={rowIndex} className="art-section mt-[60px]">
-                   {rowIndex === 0 && <h2 className="grid-heading rv font-display text-[clamp(22px,3vw,30px)] font-semibold text-[var(--mn-navy)] pb-[12px] border-b-2 border-[var(--mn-burgundy)] inline-block mb-[40px]">More Insights</h2>}
+                   {rowIndex === 0 && <h2 suppressHydrationWarning className="grid-heading rv font-display text-[clamp(22px,3vw,30px)] font-semibold text-[var(--heading-primary)] pb-[12px] border-b-2 border-[var(--mn-burgundy)] inline-block mb-[40px]">More Insights</h2>}
                    <div className="art-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-[rgba(139,28,63,.1)]">
                     {row.map((post, i) => (
                       <ArticleCard key={post.id} post={post} delayClass={`d${i+1}`} />
@@ -132,7 +129,7 @@ export default function InsightsContent({ posts }: InsightsContentProps) {
 
           {filteredPosts.length === 0 && (
             <div className="py-32 text-center">
-              <p className="font-display italic text-2xl text-[var(--mn-navy)] mb-6">No articles found in this category.</p>
+              <p className="font-display italic text-2xl text-[var(--heading-primary)] mb-6">No articles found in this category.</p>
               <button 
                 onClick={() => handleCategoryChange('All Articles')}
                 className="text-[var(--mn-burgundy)] text-[12px] font-bold uppercase tracking-[2px] border-b border-[var(--mn-burgundy)] pb-1"
@@ -144,14 +141,14 @@ export default function InsightsContent({ posts }: InsightsContentProps) {
 
           {/* PAGINATION */}
           {filteredPosts.length > 0 && (
-            <div className="pagination rv flex items-center justify-center gap-[4px] mt-[56px] pt-[40px] border-t border-[var(--mn-cream-dark)]">
-              <button className="page-btn arrow w-[44px] h-[44px] flex items-center justify-center text-[13px] border border-[var(--mn-gray-light)] bg-white text-[var(--mn-navy)] hover:border-[var(--mn-burgundy)] hover:text-[var(--mn-burgundy)] transition-all">←</button>
+            <div className="pagination rv flex items-center justify-center gap-[4px] mt-[56px] pt-[40px] border-t border-[var(--mn-cream-dark)]" suppressHydrationWarning>
+              <button className="page-btn arrow w-[44px] h-[44px] flex items-center justify-center text-[13px] border border-[var(--mn-gray-light)] bg-[var(--bg-primary)] text-[var(--text-primary)] hover:border-[var(--mn-burgundy)] hover:text-[var(--mn-burgundy)] transition-all">←</button>
               <button className="page-btn active w-[44px] h-[44px] flex items-center justify-center text-[13px] font-medium border border-[var(--mn-burgundy)] bg-[var(--mn-burgundy)] text-white">1</button>
-              <button className="page-btn w-[44px] h-[44px] flex items-center justify-center text-[13px] font-medium border border-[var(--mn-gray-light)] bg-white text-[var(--mn-navy)] hover:border-[var(--mn-burgundy)] hover:text-[var(--mn-burgundy)]">2</button>
-              <button className="page-btn w-[44px] h-[44px] flex items-center justify-center text-[13px] font-medium border border-[var(--mn-gray-light)] bg-white text-[var(--mn-navy)] hover:border-[var(--mn-burgundy)] hover:text-[var(--mn-burgundy)]">3</button>
+              <button className="page-btn w-[44px] h-[44px] flex items-center justify-center text-[13px] font-medium border border-[var(--mn-gray-light)] bg-[var(--bg-primary)] text-[var(--text-primary)] hover:border-[var(--mn-burgundy)] hover:text-[var(--mn-burgundy)]">2</button>
+              <button className="page-btn w-[44px] h-[44px] flex items-center justify-center text-[13px] font-medium border border-[var(--mn-gray-light)] bg-[var(--bg-primary)] text-[var(--text-primary)] hover:border-[var(--mn-burgundy)] hover:text-[var(--mn-burgundy)]">3</button>
               <span className="text-[var(--mn-gray-light)] text-[13px] px-[8px]">…</span>
-              <button className="page-btn w-[44px] h-[44px] flex items-center justify-center text-[13px] font-medium border border-[var(--mn-gray-light)] bg-white text-[var(--mn-navy)] hover:border-[var(--mn-burgundy)] hover:text-[var(--mn-burgundy)]">8</button>
-              <button className="page-btn arrow w-[44px] h-[44px] flex items-center justify-center text-[13px] border border-[var(--mn-gray-light)] bg-white text-[var(--mn-navy)] hover:border-[var(--mn-burgundy)] hover:text-[var(--mn-burgundy)] transition-all">→</button>
+              <button className="page-btn w-[44px] h-[44px] flex items-center justify-center text-[13px] font-medium border border-[var(--mn-gray-light)] bg-[var(--bg-primary)] text-[var(--text-primary)] hover:border-[var(--mn-burgundy)] hover:text-[var(--mn-burgundy)]">8</button>
+              <button className="page-btn arrow w-[44px] h-[44px] flex items-center justify-center text-[13px] border border-[var(--mn-gray-light)] bg-[var(--bg-primary)] text-[var(--text-primary)] hover:border-[var(--mn-burgundy)] hover:text-[var(--mn-burgundy)] transition-all">→</button>
             </div>
           )}
         </div>

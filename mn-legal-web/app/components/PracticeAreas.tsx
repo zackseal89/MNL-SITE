@@ -75,7 +75,7 @@ export default function PracticeAreas() {
           <span className="text-[var(--mn-burgundy)] text-[11px] font-semibold uppercase tracking-[0.2em] mb-4 block">
             Our Expertise
           </span>
-          <h2 className="text-[clamp(32px,5vw,48px)] font-display text-[var(--mn-navy)] leading-tight border-b-2 border-[var(--mn-burgundy)] pb-6 inline-block">
+          <h2 className="text-[clamp(32px,5vw,48px)] font-display text-[var(--heading-primary)] leading-tight border-b-2 border-[var(--mn-burgundy)] pb-6 inline-block">
             Practice Areas
           </h2>
         </div>
@@ -83,14 +83,14 @@ export default function PracticeAreas() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-[rgba(139,28,63,0.1)] border border-[rgba(139,28,63,0.1)]">
           {practices.map((practice: any) => (
             <div
-              key={practice.id}
-              className="practice-card bg-white p-10 md:p-12 hover:bg-[#fafaf9] transition-all duration-400 group relative overflow-hidden"
+              key={practice.title}
+              className="practice-card bg-[var(--bg-primary)] p-10 md:p-12 hover:bg-[var(--mn-cream)] transition-all duration-400 group relative overflow-hidden"
             >
               <span className="block text-[14px] font-display text-[var(--mn-burgundy)] font-semibold tracking-[0.1em] mb-6">
                 {practice.id}
               </span>
               
-              <h3 className="text-[24px] font-display text-[var(--mn-navy)] mb-4 font-medium group-hover:text-[var(--mn-burgundy)] transition-colors">
+              <h3 className="text-[24px] font-display text-[var(--heading-primary)] mb-4 font-medium group-hover:text-[var(--mn-burgundy)] transition-colors">
                 {practice.title}
               </h3>
               

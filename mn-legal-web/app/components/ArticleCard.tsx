@@ -11,7 +11,7 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ post, delayClass = "d1" }: ArticleCardProps) {
   return (
-    <article className={`group art-card ${delayClass} bg-white overflow-hidden flex flex-col transition-[transform,opacity] duration-400 ease-[var(--ease-expo)] hover:-translate-y-1`}>
+    <article className={`group art-card ${delayClass} bg-[var(--bg-primary)] overflow-hidden flex flex-col transition-[transform,opacity] duration-400 ease-[var(--ease-expo)] hover:-translate-y-1`}>
       <Link href={`/insights/${post.slug}`} className="block h-full flex flex-col no-underline color-inherit">
         <div className="art-card-img relative overflow-hidden bg-[linear-gradient(160deg,#e8e4dc,#f0ece4)] aspect-[16/9]">
           <div className="art-card-img-inner w-full h-full flex items-center justify-center font-display text-[40px] text-black/5 italic transition-transform duration-600 ease-[var(--ease-expo)] group-hover:scale-[1.05]">
@@ -32,7 +32,7 @@ export default function ArticleCard({ post, delayClass = "d1" }: ArticleCardProp
           <span className="art-card-date text-[11px] text-[var(--text-secondary)] tracking-[.5px] mb-[10px] block">
             {post.date}
           </span>
-          <h3 className="art-card-title font-display text-[18px] font-semibold leading-[1.3] text-[var(--mn-navy)] mb-[12px] transition-colors duration-300 group-hover:text-[var(--mn-burgundy)] line-clamp-2">
+          <h3 className="art-card-title font-display text-[18px] font-semibold leading-[1.3] text-[var(--heading-primary)] mb-[12px] transition-colors duration-300 group-hover:text-[var(--mn-burgundy)] line-clamp-2">
             {post.title}
           </h3>
           <p className="art-card-exc text-[13.5px] leading-[1.7] text-[var(--text-secondary)] line-clamp-3 flex-1">

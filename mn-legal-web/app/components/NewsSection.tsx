@@ -23,8 +23,8 @@ export default async function NewsSection() {
             <span className="text-[var(--mn-burgundy)] text-[11px] font-semibold uppercase tracking-[0.2em] mb-4 block">
               Legal Insights
             </span>
-            <h2 className="text-[clamp(32px,4vw,42px)] font-display text-[var(--mn-navy)] leading-tight border-none pb-0">
-              Latest News & Briefings
+            <h2 className="text-[clamp(32px,4vw,42px)] font-display text-[var(--heading-primary)] leading-tight border-none pb-0">
+              Latest Insights
             </h2>
           </div>
           <Link href="/insights" className="text-[13px] uppercase font-bold text-[var(--mn-burgundy)] tracking-widest border-b-2 border-[var(--mn-burgundy)] pb-2 hover:opacity-70 transition-opacity">
@@ -35,7 +35,7 @@ export default async function NewsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Featured Post */}
           <div className="lg:col-span-2 group">
-            <Link href={`/insights/${featured.slug}`} className="block h-full bg-white transition-all duration-500 hover:shadow-2xl">
+            <Link href={`/insights/${featured.slug}`} className="block h-full bg-[var(--bg-primary)] transition-all duration-500 hover:shadow-2xl">
               <div className="relative aspect-[16/9] overflow-hidden">
                 <img src={featured.image} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt={featured.title} />
                 <div className="absolute top-6 left-6 bg-[var(--mn-burgundy)] px-4 py-1 text-[11px] font-bold text-white uppercase tracking-wider">
@@ -44,10 +44,10 @@ export default async function NewsSection() {
               </div>
               <div className="p-10">
                 <span className="block text-[12px] text-gray-400 mb-4">{featured.date}</span>
-                <h3 className="text-[28px] font-display text-[var(--mn-navy)] mb-6 leading-snug group-hover:text-[var(--mn-burgundy)] transition-colors">
+                <h3 className="text-[28px] font-display text-[var(--heading-primary)] mb-6 leading-snug group-hover:text-[var(--mn-burgundy)] transition-colors">
                   {featured.title}
                 </h3>
-                <p className="text-[15px] text-gray-600 leading-relaxed mb-8 max-w-[600px]">
+                <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed mb-8 max-w-[600px]">
                   {featured.excerpt}
                 </p>
                 <div className="inline-flex items-center text-[13px] uppercase font-bold text-[var(--mn-burgundy)] tracking-widest group/link">
@@ -66,7 +66,7 @@ export default async function NewsSection() {
                 </div>
                 <div>
                    <span className="block text-[11px] font-bold text-[var(--mn-burgundy)] uppercase tracking-wider mb-2">{post.category}</span>
-                   <h3 className="text-[20px] font-display text-[var(--mn-navy)] leading-tight group-hover:text-[var(--mn-burgundy)] transition-colors line-clamp-2">
+                   <h3 className="text-[20px] font-display text-[var(--heading-primary)] leading-tight group-hover:text-[var(--mn-burgundy)] transition-colors line-clamp-2">
                       {post.title}
                    </h3>
                 </div>

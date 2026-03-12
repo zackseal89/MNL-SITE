@@ -14,7 +14,7 @@ export default function NewsletterStrip() {
   };
 
   return (
-    <div className="nl-strip rv bg-[linear-gradient(135deg,#1a2744_0%,#2d3e5f_50%,#1a2744_100%)] p-[64px_60px] relative overflow-hidden my-[60px] md:px-[60px] px-[24px]">
+    <div className="nl-strip rv bg-[linear-gradient(135deg,#1a2744_0%,#2d3e5f_50%,#1a2744_100%)] p-[64px_60px] relative overflow-hidden my-[60px] md:px-[60px] px-[24px]" suppressHydrationWarning>
       <div className="nl-circle nlc1 absolute w-[260px] h-[260px] right-[-60px] top-[-60px] border-2 border-[rgba(139,28,63,.22)] rounded-full pointer-events-none"></div>
       <div className="nl-circle nlc2 absolute w-[180px] h-[180px] left-[-40px] bottom-[-40px] border-[1.5px] border-[rgba(139,28,63,.15)] rounded-full pointer-events-none"></div>
       
@@ -22,13 +22,13 @@ export default function NewsletterStrip() {
       <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(139,28,63,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,28,63,.04) 1px,transparent 1px)', backgroundSize: '60px 60px' }}></div>
 
       <div className="nl-inner relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center">
-        <div className="rvl d1">
+        <div className="rvl d1" suppressHydrationWarning>
           <div className="nl-tag inline-flex items-center gap-[10px] text-[10px] font-medium tracking-[3px] uppercase text-white/55 mb-[16px]">MN Legal Updates</div>
           <h3 className="nl-title font-display text-[clamp(22px,3vw,32px)] font-medium italic text-white leading-[1.25] mb-[14px]">Stay Informed on Kenyan Law</h3>
           <p className="nl-sub text-[14px] leading-[1.7] text-white/60 mb-[4px]">Join 2,400+ legal professionals receiving our monthly analysis on Kenyan and East African law - delivered to your inbox.</p>
           <p className="nl-trust text-[11px] text-white/35 mt-[12px]">No spam. Unsubscribe at any time.</p>
         </div>
-        <div className="rvr d2">
+        <div className="rvr d2" suppressHydrationWarning>
           {!isSuccess ? (
             <form onSubmit={handleSubmit} className="nl-form flex flex-col gap-[16px]">
               <input 

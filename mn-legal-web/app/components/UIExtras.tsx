@@ -4,7 +4,6 @@ import { useEffect, useState, useRef } from 'react';
 
 export default function UIExtras() {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [showOverlay, setShowOverlay] = useState(true);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [cursorRingPos, setCursorRingPos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -13,9 +12,6 @@ export default function UIExtras() {
   const cursorRingRef = useRef<{ x: number, y: number }>({ x: 0, y: 0 });
 
   useEffect(() => {
-    // ── OVERLAY ──
-    const overlayTimer = setTimeout(() => setShowOverlay(false), 80);
-
     // ── SCROLL PROGRESS ──
     const handleScroll = () => {
       const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
@@ -61,10 +57,9 @@ export default function UIExtras() {
     };
 
     // Use requestAnimationFrame to run after React finishes its initial hydration/paint cycle
-    let rafId: number;
     let mutationObserver: MutationObserver | null = null;
     
-    rafId = requestAnimationFrame(() => {
+    const rafId = requestAnimationFrame(() => {
       setupReveals();
       mutationObserver = new MutationObserver(setupReveals);
       mutationObserver.observe(document.body, { childList: true, subtree: true });
@@ -85,7 +80,6 @@ export default function UIExtras() {
     requestRef = requestAnimationFrame(animateCursor);
 
     return () => {
-      clearTimeout(overlayTimer);
       cancelAnimationFrame(rafId);
       mutationObserver?.disconnect();
       window.removeEventListener('scroll', handleScroll);
@@ -105,13 +99,6 @@ export default function UIExtras() {
         style={{ width: `${scrollProgress}%` }}
       ></div>
 
-      {/* ── OVERLAY WIPE ── */}
-      <div
-        id="overlay"
-        className={`fixed inset-0 bg-[var(--mn-burgundy)] z-[999999] transition-transform duration-900 ease-[var(--ease-expo)] origin-top pointer-events-none ${
-          showOverlay ? 'scale-y-100' : 'scale-y-0'
-        }`}
-      ></div>
 
       {/* ── CURSOR ── */}
       <div 

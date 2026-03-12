@@ -28,14 +28,14 @@ export default function FeaturedArticle({ post }: FeaturedArticleProps) {
         </div>
 
         {/* Content Area */}
-        <div className="feat-body d2 p-[52px] flex flex-col justify-center bg-white">
+        <div className="feat-body d2 p-[52px] flex flex-col justify-center bg-[var(--bg-primary)]">
           <span className="art-tag inline-block bg-[var(--mn-burgundy)] text-white text-[10px] font-semibold tracking-[2px] uppercase p-[5px_12px] mb-[16px]">
             {post.category}
           </span>
           <span className="art-date text-[12px] text-[var(--text-secondary)] tracking-[.5px] mb-[14px] block">
             {post.date}
           </span>
-          <h2 className="feat-title font-display text-[clamp(22px,2.5vw,30px)] font-semibold leading-[1.25] text-[var(--mn-navy)] mb-[18px] transition-colors duration-300 group-hover:text-[var(--mn-burgundy)]">
+          <h2 className="feat-title font-display text-[clamp(22px,2.5vw,30px)] font-semibold leading-[1.25] text-[var(--heading-primary)] mb-[18px] transition-colors duration-300 group-hover:text-[var(--mn-burgundy)]">
             {post.title}
           </h2>
           <p className="feat-excerpt text-[15px] leading-[1.8] text-[var(--text-secondary)] mb-[32px] line-clamp-3">
@@ -49,7 +49,7 @@ export default function FeaturedArticle({ post }: FeaturedArticleProps) {
                <Image src={post.author.avatar} alt={post.author.name} fill className="object-cover" />
             </div>
             <div>
-              <span className="author-name text-[13px] font-semibold text-[var(--mn-navy)] block">{post.author.name}</span>
+              <span className="author-name text-[13px] font-semibold text-[var(--heading-primary)] block">{post.author.name}</span>
               <span className="author-role text-[11px] text-[var(--text-secondary)]">{post.author.role} · {post.readTime}</span>
             </div>
           </div>

@@ -22,7 +22,7 @@ const categories = Object.keys(categoryMap);
 
 export default function CategoryFilter({ activeCategory, onCategoryChange, counts }: CategoryFilterProps) {
   return (
-    <div id="cat-bar" role="navigation" aria-label="Article categories" className="sticky top-[72px] z-[100] bg-white border-b border-[var(--mn-cream-dark)] overflow-x-auto no-scrollbar scroll-smooth">
+    <div id="cat-bar" role="navigation" aria-label="Article categories" className="sticky top-[72px] z-[100] bg-[var(--bg-primary)] border-b border-[var(--mn-cream-dark)] overflow-x-auto no-scrollbar scroll-smooth">
       <div className="cat-inner flex gap-0 px-[60px] md:px-[60px] px-[24px] min-w-max">
         {categories.map((cat: string) => (
           <button

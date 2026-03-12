@@ -61,8 +61,8 @@ export default function TOC() {
               href={`#${heading.id}`}
               className={`text-[13px] transition-colors duration-300 hover:text-[var(--mn-burgundy)] ${
                 activeId === heading.id 
-                  ? 'text-[var(--mn-burgundy)] font-medium' 
-                  : 'text-gray-500'
+                  ? 'text-[var(--mn-burgundy)] font-bold' 
+                  : 'text-[var(--text-secondary)]'
               }`}
               onClick={(e) => {
                 e.preventDefault();

@@ -12,7 +12,7 @@ export default async function InsightsPage() {
   const allPosts = wpPosts?.map(mapWPPostToPost) || [];
 
   return (
-    <main className="relative bg-white min-h-screen">
+    <main className="relative bg-[var(--bg-primary)] min-h-screen">
       <UIExtras />
       <Navbar />
       
