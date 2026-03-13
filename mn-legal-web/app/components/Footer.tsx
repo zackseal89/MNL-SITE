@@ -9,13 +9,15 @@ export default function Footer() {
     <footer className="bg-[var(--mn-navy-deep)] p-[64px_60px_36px] border-t border-[rgba(139,28,63,.22)] md:px-[60px] px-[24px]">
       <div className="foot-top grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-[52px] mb-[52px]">
         <div>
-          <Link href="/" className="foot-brand relative block w-[200px] h-[50px] mb-6">
-            <Image 
-              src="https://mnlegal.net/wp-content/uploads/2021/11/MNL-ADVOCATES-LLP-MN-LEGAL-x2.png" 
-              alt="MN Legal – MN Advocates LLP"
-              fill
-              className="object-contain object-left"
-            />
+          <Link href="/" className="foot-brand relative inline-block bg-white p-3 mb-6 transition-transform duration-500 hover:scale-105">
+            <div className="relative w-[180px] h-[45px]">
+              <Image 
+                src="https://mnlegal.net/wp-content/uploads/2021/11/MNL-ADVOCATES-LLP-MN-LEGAL-x2.png" 
+                alt="MN Legal – MN Advocates LLP"
+                fill
+                className="object-contain"
+              />
+            </div>
           </Link>
           <p className="foot-tagline text-[13px] leading-[1.7] text-white/45 max-w-[400px] mb-[24px]">We are a full–service firm that endeavors to take genuine interest in our clients, understand their objectives and provide a network of innovative legal solutions, excellent legal representation and a growth partner for their businesses.</p>
           <div className="foot-social flex gap-[10px]">
