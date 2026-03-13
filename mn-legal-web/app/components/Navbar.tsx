@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 import Image from 'next/image';
-import { ThemeToggle } from './ThemeToggle';
 
 const navLinks = [
   { label: 'Home',           href: '/' },
@@ -69,8 +68,6 @@ export default function Navbar() {
           <span className="relative z-10">Consult Now</span>
           <div className="absolute inset-0 bg-[var(--mn-burgundy-dark)] translate-x-[-101%] transition-transform duration-500 ease-[var(--ease-expo)] group-hover:translate-x-0"></div>
         </button>
-
-        <ThemeToggle />
 
         <button 
           className={`nav-ham md:hidden flex flex-col gap-[5px] p-[4px] ml-2 relative z-[1001] ${isOpen ? 'open' : ''}`}
