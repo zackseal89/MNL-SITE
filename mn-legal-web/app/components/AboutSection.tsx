@@ -5,8 +5,6 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const stats = [
   { label: 'Years of Excellence', value: 7, suffix: '+' },
   { label: 'Cases Resolved', value: 500, suffix: '+' },
@@ -19,6 +17,8 @@ export default function AboutSection() {
   const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
     const ctx = gsap.context(() => {
       // Reveal text
       gsap.fromTo(
@@ -81,7 +81,7 @@ export default function AboutSection() {
 
           <div className="relative aspect-square lg:aspect-[4/5] overflow-hidden group border border-[rgba(255,255,255,0.08)] shadow-[0_20px_50px_rgba(0,0,0,0.3)] about-reveal">
              <Image 
-                src="/images/firm-story.jpg"
+                src="https://mnlegal.net/wp-content/uploads/2026/03/DSC3082-99-scaled.jpg"
                 alt="The MN Legal Team"
                 fill
                 className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105"
