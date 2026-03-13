@@ -70,6 +70,9 @@ export default function AboutSection() {
               <p>
                 Founded on the principles of integrity and technical excellence, MN Legal has established itself as a cornerstone of the East African legal landscape. We serve a diverse portfolio of domestic and international clients with surgical precision.
               </p>
+              <div className="pl-6 border-l-2 border-[var(--mn-burgundy)] py-2 my-8 italic text-white/90">
+                "Our mission is to be an innovative, dynamic, client-oriented – 21st century firm geared toward growth and recognized for excellence in our service delivery."
+              </div>
               <p>
                 Our approach combines deep-rooted local knowledge with international standards, ensuring that every counsel provided is both strategically sound and commercially viable.
               </p>

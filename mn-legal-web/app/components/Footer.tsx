@@ -17,7 +17,7 @@ export default function Footer() {
               className="object-contain object-left"
             />
           </Link>
-          <p className="foot-tagline text-[13px] leading-[1.7] text-white/40 max-w-[260px] mb-[24px]">Your creative, innovative legal partner — <em>local expertise · global talent</em>. Serving Kenya and East Africa from Nairobi.</p>
+          <p className="foot-tagline text-[13px] leading-[1.7] text-white/45 max-w-[400px] mb-[24px]">We are a full–service firm that endeavors to take genuine interest in our clients, understand their objectives and provide a network of innovative legal solutions, excellent legal representation and a growth partner for their businesses.</p>
           <div className="foot-social flex gap-[10px]">
             {['𝕏', 'in', '✉'].map((icon, i) => (
               <a 

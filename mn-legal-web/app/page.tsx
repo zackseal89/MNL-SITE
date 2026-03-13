@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import PracticeAreas from './components/PracticeAreas';
 import AboutSection from './components/AboutSection';
+import CoreValues from './components/CoreValues';
 import TeamSection from './components/TeamSection';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <PracticeAreas />
       <AboutSection />
+      <CoreValues />
       <TeamSection />
       <Testimonials />
       <FAQ />
