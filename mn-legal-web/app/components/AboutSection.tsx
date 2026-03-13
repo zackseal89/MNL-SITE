@@ -58,15 +58,15 @@ export default function AboutSection() {
   return (
     <section id="about" className="bg-[var(--mn-navy)] py-24 px-6 md:px-16 overflow-hidden" ref={sectionRef}>
       <div className="max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-24 items-center mb-20">
+          <div className="max-w-[540px]">
             <span className="about-reveal text-[var(--mn-burgundy)] text-[11px] font-semibold uppercase tracking-[0.2em] mb-4 block">
               EST. - NAIROBI
             </span>
             <h2 className="about-reveal text-[clamp(32px,4vw,42px)] font-display text-white leading-tight mb-8 border-none p-0">
               A Legacy of Precision <br /> and Legal Authority
             </h2>
-            <div className="about-reveal space-y-6 text-white font-body text-[17px] leading-relaxed max-w-[600px] font-medium">
+            <div className="about-reveal space-y-6 text-white font-body text-[17px] leading-relaxed font-medium">
               <p>
                 Founded on the principles of integrity and technical excellence, MN Legal has established itself as a cornerstone of the East African legal landscape. We serve a diverse portfolio of domestic and international clients with surgical precision.
               </p>
@@ -79,7 +79,7 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="relative aspect-square lg:aspect-[4/5] overflow-hidden group border border-[rgba(255,255,255,0.08)] shadow-[0_20px_50px_rgba(0,0,0,0.3)] about-reveal">
+          <div className="relative aspect-square lg:aspect-[1.2/1] overflow-hidden group border border-[rgba(255,255,255,0.08)] shadow-[0_20px_50px_rgba(0,0,0,0.3)] about-reveal">
              <Image 
                 src="https://mnlegal.net/wp-content/uploads/2026/03/DSC3081-98-scaled.jpg"
                 alt="The MN Legal Team"
