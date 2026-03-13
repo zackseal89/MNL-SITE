@@ -11,7 +11,7 @@ export default function Footer() {
         <div>
           <Link href="/" className="foot-brand relative block w-[200px] h-[50px] mb-6">
             <Image 
-              src="https://mnlegal.net/wp-content/uploads/2021/08/MNL-ADVOCATES-LLP-MN-LEGAL-negative.svg" 
+              src="https://mnlegal.net/wp-content/uploads/2021/08/MNL-ADVOCATES-LLP-MN-LEGAL.svg" 
               alt="MN Legal – MN Advocates LLP"
               fill
               className="object-contain object-left"
