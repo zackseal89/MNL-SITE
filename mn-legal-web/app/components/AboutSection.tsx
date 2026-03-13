@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -78,17 +79,28 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="relative aspect-square md:aspect-video lg:aspect-square bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.1)] flex items-center justify-center">
-             {/* Decorative SVG or Visual element as per prompt */}
-             <div className="absolute inset-0 opacity-10">
-                <svg viewBox="0 0 100 100" className="w-full h-full text-[var(--mn-burgundy)]">
-                   <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" strokeWidth="0.5" />
-                   <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" strokeWidth="0.5" />
-                </svg>
-             </div>
-             <div className="relative z-10 text-center p-8">
-                <span className="font-display italic text-[80px] text-[rgba(139,28,63,0.4)] block leading-none mb-2">MNL</span>
-                <span className="text-[11px] uppercase tracking-[0.4em] text-white/40">Advocates LLP</span>
+          <div className="relative aspect-square lg:aspect-[4/5] overflow-hidden group border border-[rgba(255,255,255,0.08)] shadow-[0_20px_50px_rgba(0,0,0,0.3)] about-reveal">
+             <Image 
+                src="/images/firm-story.jpg"
+                alt="The MN Legal Team"
+                fill
+                className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105"
+                priority
+             />
+             
+             {/* Cinematic Fades & Shadows */}
+             <div className="absolute inset-0 bg-gradient-to-r from-[var(--mn-navy)] via-transparent to-transparent opacity-80 lg:opacity-60"></div>
+             <div className="absolute inset-0 bg-gradient-to-t from-[var(--mn-navy)] via-transparent to-transparent opacity-40"></div>
+             
+             {/* Subtle Color Alignment Overlay */}
+             <div className="absolute inset-0 bg-[var(--mn-burgundy)] mix-blend-color opacity-10 group-hover:opacity-0 transition-opacity duration-700"></div>
+             
+             {/* Decorative Corner Element */}
+             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[var(--mn-burgundy)] to-transparent opacity-10"></div>
+             
+             <div className="absolute bottom-10 right-10 z-10 text-right transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+                <span className="font-display italic text-3xl text-white block mb-1">Tradition & Innovation</span>
+                <span className="text-[10px] uppercase tracking-[4px] text-white/60 font-bold">Nairobi, Kenya</span>
              </div>
           </div>
         </div>
