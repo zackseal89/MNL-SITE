@@ -50,4 +50,16 @@ export const teamMembers: TeamMember[] = [
     practice: 'Commercial Law & International Arbitration',
     image: 'https://mnlegal.net/wp-content/uploads/2024/01/Nour-Sheriff.jpg',
   },
+  {
+    name: 'Tyrus Muya Kamau',
+    title: 'Head of Cybersecurity',
+    practice: 'Cybersecurity & Digital Forensics',
+    image: 'https://mnlegal.net/wp-content/uploads/2026/03/Tyrus-Muya-Kamau.jpg.jpeg',
+  },
+  {
+    name: 'Keziah Mwangi',
+    title: 'HRM and Tax Associate',
+    practice: 'Human Resources & Taxation',
+    image: 'https://mnlegal.net/wp-content/uploads/2026/03/Keziah.jpg',
+  },
 ];
