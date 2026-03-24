@@ -84,7 +84,7 @@ export default function AboutSection() {
 
           <div className="relative aspect-square lg:aspect-[1.2/1] overflow-hidden group border border-[rgba(255,255,255,0.08)] shadow-[0_20px_50px_rgba(0,0,0,0.3)] about-reveal">
              <Image 
-                src="https://mnlegal.net/wp-content/uploads/2026/03/DSC3081-98-scaled.jpg"
+                src="https://wp.mnlegal.net/wp-content/uploads/2026/03/DSC3081-98-scaled.jpg"
                 alt="The MN Legal Team"
                 fill
                 className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105"

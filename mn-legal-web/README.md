@@ -40,7 +40,7 @@ cd MNL-SITE/mn-legal-web
 ### 2. Environment Setup
 Create a `.env.local` file in the `mn-legal-web` directory:
 ```env
-WORDPRESS_API_URL=https://mnlegal.net/graphql
+WORDPRESS_API_URL=https://wp.mnlegal.net/graphql
 ```
 
 ### 3. Install & Run
