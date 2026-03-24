@@ -12,7 +12,7 @@ export default function Footer() {
           <Link href="/" className="foot-brand relative inline-block bg-white p-3 mb-6 transition-transform duration-500 hover:scale-105">
             <div className="relative w-[180px] h-[45px]">
               <Image 
-                src="https://mnlegal.net/wp-content/uploads/2021/11/MNL-ADVOCATES-LLP-MN-LEGAL-x2.png" 
+                src="https://wp.mnlegal.net/wp-content/uploads/2021/11/MNL-ADVOCATES-LLP-MN-LEGAL-x2.png"
                 alt="MN Legal – MN Advocates LLP"
                 fill
                 className="object-contain"

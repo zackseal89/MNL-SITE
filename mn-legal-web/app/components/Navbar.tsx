@@ -36,7 +36,7 @@ export default function Navbar() {
       <Link href="/" className="nav-brand relative transition-transform duration-500 hover:scale-105 bg-white p-2 inline-flex items-center">
         <div className="relative w-[180px] h-[45px]">
           <Image 
-            src="https://mnlegal.net/wp-content/uploads/2021/11/MNL-ADVOCATES-LLP-MN-LEGAL-x2.png" 
+            src="https://wp.mnlegal.net/wp-content/uploads/2021/11/MNL-ADVOCATES-LLP-MN-LEGAL-x2.png"
             alt="MN Legal - MN Advocates LLP"
             fill
             className="object-contain"

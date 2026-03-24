@@ -1,4 +1,4 @@
-const API_URL = process.env.WORDPRESS_API_URL || 'https://mnlegal.net/graphql';
+const API_URL = process.env.WORDPRESS_API_URL || 'https://wp.mnlegal.net/graphql';
 
 async function fetchAPI(query: string, { variables }: any = {}) {
   const headers = { 'Content-Type': 'application/json' };

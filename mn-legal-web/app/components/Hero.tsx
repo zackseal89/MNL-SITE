@@ -10,22 +10,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 const SLIDE_IMAGES = [
   {
-    url: 'https://mnlegal.net/wp-content/uploads/2024/01/MN-Legal-Representation.jpg',
+    url: 'https://wp.mnlegal.net/wp-content/uploads/2024/01/MN-Legal-Representation.jpg',
     alt: 'MN Legal advocates in representation',
     caption: 'MN Advocates LLP'
   },
   {
-    url: 'https://mnlegal.net/wp-content/uploads/2026/03/hero-nairobi-skyline.png',
+    url: 'https://wp.mnlegal.net/wp-content/uploads/2026/03/hero-nairobi-skyline.png',
     alt: 'Nairobi Central Business District skyline',
     caption: "Nairobi's Legal Centre"
   },
   {
-    url: 'https://mnlegal.net/wp-content/uploads/2026/03/hero-law-courts.png',
+    url: 'https://wp.mnlegal.net/wp-content/uploads/2026/03/hero-law-courts.png',
     alt: 'High Court of Kenya, Nairobi',
     caption: 'High Court of Kenya'
   },
   {
-    url: 'https://mnlegal.net/wp-content/uploads/2026/03/hero-boardroom.png',
+    url: 'https://wp.mnlegal.net/wp-content/uploads/2026/03/hero-boardroom.png',
     alt: 'MN Legal corporate boardroom, Nairobi',
     caption: 'The MN Legal Boardroom'
   }
