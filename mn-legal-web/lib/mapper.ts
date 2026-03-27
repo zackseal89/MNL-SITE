@@ -47,7 +47,14 @@ export function mapWPPostToPost(wpPost: any): Post {
   // Extract author info safely
   const authorNode = wpPost.author?.node || {};
   const authorName = authorNode.name || 'MN Legal';
-  const authorRole = authorNode.description ? 'Senior Advocate' : 'Advocate';
+  let authorRole = authorNode.description ? 'Senior Advocate' : 'Advocate';
+  let authorRoleLink = undefined;
+
+  if (authorName === 'Jonathan Baumgart') {
+    authorRole = 'CEO of Atomiq Consulting';
+    authorRoleLink = 'https://atomiqconsulting.com/';
+  }
+
   const authorAvatar = authorNode.avatar?.url || 'https://via.placeholder.com/150';
   const authorBio = authorNode.description || '';
 
@@ -68,6 +75,7 @@ export function mapWPPostToPost(wpPost: any): Post {
     author: {
       name: authorName,
       role: authorRole,
+      roleLink: authorRoleLink,
       avatar: authorAvatar,
       bio: authorBio
     },

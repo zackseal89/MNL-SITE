@@ -75,7 +75,13 @@ export default async function SingleArticle({ params }: PageProps) {
               </div>
               <div className="text-left">
                 <span className="block text-[14px] font-bold text-white leading-none mb-1">{post.author.name}</span>
-                <span className="block text-[11px] uppercase tracking-wider text-white/55">{post.author.role}</span>
+                {post.author.roleLink ? (
+                  <a href={post.author.roleLink} target="_blank" rel="noopener noreferrer" className="block text-[11px] uppercase tracking-wider text-white/55 hover:text-white transition-colors">
+                    {post.author.role}
+                  </a>
+                ) : (
+                  <span className="block text-[11px] uppercase tracking-wider text-white/55">{post.author.role}</span>
+                )}
               </div>
             </div>
             <div className="flex items-center gap-2 text-[12px] text-white/45 uppercase tracking-widest border-l border-white/20 pl-8 font-medium">
@@ -133,7 +139,13 @@ export default async function SingleArticle({ params }: PageProps) {
                </div>
                <div>
                   <span className="block text-[22px] font-display text-[var(--heading-primary)] font-semibold mb-1">{post.author.name}</span>
-                  <span className="block text-[11px] uppercase tracking-[2px] text-[var(--mn-burgundy)] font-bold mb-4">{post.author.role}</span>
+                  {post.author.roleLink ? (
+                    <a href={post.author.roleLink} target="_blank" rel="noopener noreferrer" className="block text-[11px] uppercase tracking-[2px] text-[var(--mn-burgundy)] font-bold mb-4 hover:opacity-70 transition-opacity">
+                      {post.author.role}
+                    </a>
+                  ) : (
+                    <span className="block text-[11px] uppercase tracking-[2px] text-[var(--mn-burgundy)] font-bold mb-4">{post.author.role}</span>
+                  )}
                   <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed mb-6">{post.author.bio}</p>
                   <Link href={`/insights?author=${post.author.name}`} className="inline-flex items-center text-[12px] font-bold text-[var(--mn-burgundy)] uppercase tracking-[2px] hover:opacity-70 transition-opacity">
                     View all articles by {post.author.name} →
@@ -168,7 +180,13 @@ export default async function SingleArticle({ params }: PageProps) {
                       <Image src={post.author.avatar} alt={post.author.name} fill className="object-cover" />
                    </div>
                    <span className="block text-[16px] font-display font-semibold text-[var(--heading-primary)] mb-1">{post.author.name}</span>
-                   <span className="block text-[10px] uppercase tracking-[2px] text-[var(--mn-burgundy)] font-bold mb-3">{post.author.role}</span>
+                   {post.author.roleLink ? (
+                     <a href={post.author.roleLink} target="_blank" rel="noopener noreferrer" className="block text-[10px] uppercase tracking-[2px] text-[var(--mn-burgundy)] font-bold mb-3 hover:opacity-70 transition-opacity">
+                       {post.author.role}
+                     </a>
+                   ) : (
+                     <span className="block text-[10px] uppercase tracking-[2px] text-[var(--mn-burgundy)] font-bold mb-3">{post.author.role}</span>
+                   )}
                    <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed line-clamp-3">{post.author.bio}</p>
                 </div>
 

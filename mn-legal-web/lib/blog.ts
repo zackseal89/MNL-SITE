@@ -1,6 +1,7 @@
 export interface Author {
   name: string;
   role: string;
+  roleLink?: string;
   avatar: string;
   bio?: string;
 }
