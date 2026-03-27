@@ -50,7 +50,16 @@ export default function FeaturedArticle({ post }: FeaturedArticleProps) {
             </div>
             <div>
               <span className="author-name text-[13px] font-semibold text-[var(--heading-primary)] block">{post.author.name}</span>
-              <span className="author-role text-[11px] text-[var(--text-secondary)]">{post.author.role} · {post.readTime}</span>
+              <span className="author-role text-[11px] text-[var(--text-secondary)]">
+                {post.author.roleLink ? (
+                  <a href={post.author.roleLink} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--mn-burgundy)] transition-colors">
+                    {post.author.role}
+                  </a>
+                ) : (
+                  post.author.role
+                )}
+                {" · "}{post.readTime}
+              </span>
             </div>
           </div>
         </div>
