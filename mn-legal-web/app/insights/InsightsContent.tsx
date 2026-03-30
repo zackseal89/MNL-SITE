@@ -55,7 +55,10 @@ export default function InsightsContent({ posts }: InsightsContentProps) {
 
   const filteredPosts = useMemo(() => {
     if (activeCategory === 'All Articles') return posts;
-    return posts.filter((post: any) => post.category === activeCategory);
+    return posts.filter((post: any) =>
+      post.category === activeCategory ||
+      post.category.toLowerCase().replace(/\s+/g, '-') === activeCategory.toLowerCase()
+    );
   }, [posts, activeCategory]);
 
   const featuredPost = filteredPosts[0];
