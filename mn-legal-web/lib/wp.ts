@@ -65,6 +65,21 @@ export async function getAllPosts() {
   return data?.posts?.nodes || [];
 }
 
+export async function getAllCategories() {
+  const data = await fetchAPI(`
+    query AllCategories {
+      categories(first: 20, where: { hideEmpty: true }) {
+        nodes {
+          name
+          slug
+          count
+        }
+      }
+    }
+  `);
+  return data?.categories?.nodes || [];
+}
+
 export async function getPostBySlug(slug: string) {
   const data = await fetchAPI(`
     query PostBySlug($id: ID!, $idType: PostIdType!) {

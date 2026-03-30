@@ -1,10 +1,17 @@
-'use client';
-
 import Link from 'next/link';
-
 import Image from 'next/image';
+import { getAllCategories } from '@/lib/wp';
 
-export default function Footer() {
+export default async function Footer() {
+  const categories = await getAllCategories();
+
+  const socialLinks = [
+    { icon: '𝕏', url: 'https://twitter.com/mnlegaladvocate' },
+    { icon: 'in', url: 'https://linkedin.com/company/mn-legal' },
+    { icon: 'ig', url: 'https://www.instagram.com/mnlegaladvocates/' },
+    { icon: '✉', url: 'mailto:info@mnlegal.net' }
+  ];
+
   return (
     <footer className="bg-[var(--mn-navy-deep)] p-[64px_60px_36px] border-t border-[rgba(139,28,63,.22)] md:px-[60px] px-[24px]">
       <div className="foot-top grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-[52px] mb-[52px]">
@@ -21,15 +28,15 @@ export default function Footer() {
           </Link>
           <p className="foot-tagline text-[13px] leading-[1.7] text-white/45 max-w-[400px] mb-[24px]">We are a full–service firm that endeavors to take genuine interest in our clients, understand their objectives and provide a network of innovative legal solutions, excellent legal representation and a growth partner for their businesses.</p>
           <div className="foot-social flex gap-[10px]">
-            {['𝕏', 'in', '✉'].map((icon, i) => (
+            {socialLinks.map((social, i) => (
               <a 
                 key={i} 
-                href={icon === '𝕏' ? "https://twitter.com/mnlegaladvocate" : (icon === 'in' ? "https://linkedin.com/company/mn-legal" : "mailto:info@mnlegal.net")} 
+                href={social.url}
                 className="soc-btn w-[34px] h-[34px] border border-[rgba(139,28,63,.3)] flex items-center justify-center text-white/45 text-[12px] transition-all duration-300 hover:bg-[var(--mn-burgundy)] hover:border-[var(--mn-burgundy)] hover:text-white"
-                target={icon !== '✉' ? "_blank" : undefined}
-                rel={icon !== '✉' ? "noopener" : undefined}
+                target={social.icon !== '✉' ? "_blank" : undefined}
+                rel={social.icon !== '✉' ? "noopener" : undefined}
               >
-                {icon}
+                {social.icon}
               </a>
             ))}
           </div>
@@ -38,8 +45,9 @@ export default function Footer() {
         <div>
           <div className="foot-col-ttl text-[10px] font-semibold tracking-[2.5px] uppercase text-white/30 mb-[20px]">Practice Areas</div>
           <ul className="foot-links flex flex-col gap-[11px]">
-            {['Corporate & Commercial', 'Litigation', 'Conveyancing', 'Employment Law', 'Banking & Finance', 'Intellectual Property'].map((link: string) => (              <li key={link}>
-                <Link href="/#practices" className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85">
+            {['Corporate & Commercial', 'Litigation', 'Conveyancing', 'Employment Law', 'Banking & Finance', 'Intellectual Property'].map((link: string) => (
+              <li key={link}>
+                <Link href="/#practice" className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85">
                   {link}
                 </Link>
               </li>
@@ -50,10 +58,15 @@ export default function Footer() {
         <div>
           <div className="foot-col-ttl text-[10px] font-semibold tracking-[2.5px] uppercase text-white/30 mb-[20px]">Insights</div>
           <ul className="foot-links flex flex-col gap-[11px]">
-            {['All Articles', 'Corporate Law', 'Litigation', 'Property Law', 'Employment'].map((link: string) => (
-              <li key={link}>
-                <Link href="/insights" className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85">
-                  {link}
+            <li>
+              <Link href="/insights" className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85">
+                All Articles
+              </Link>
+            </li>
+            {categories.map((category: any) => (
+              <li key={category.slug}>
+                <Link href={`/insights?category=${category.slug}`} className="text-[13px] text-white/50 transition-colors duration-300 hover:text-white/85">
+                  {category.name}
                 </Link>
               </li>
             ))}
