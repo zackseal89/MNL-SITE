@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Twitter, Linkedin, Link as LinkIcon, Clock } from 'lucide-react';
+import { Twitter, Linkedin, Link as LinkIcon } from 'lucide-react';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import UIExtras from '@/app/components/UIExtras';
-import NewsletterStrip from '@/app/components/NewsletterStrip';
 import ArticleCard from '@/app/components/ArticleCard';
 import TOC from '@/app/components/TOC';
 import { getPostBySlug, getAllPosts } from '@/lib/wp';
