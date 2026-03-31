@@ -22,3 +22,9 @@
  GET /insights/mauritius-rising-fintech-payments-hub-africa 200 in 235ms
  GET /insights 200 in 467ms
  GET /insights/mauritius-rising-fintech-payments-hub-africa 200 in 331ms
+ ✓ Compiled in 7s (780 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 1499ms (822 modules)
+ GET / 200 in 3419ms
+ GET / 200 in 332ms
+ GET / 200 in 317ms
