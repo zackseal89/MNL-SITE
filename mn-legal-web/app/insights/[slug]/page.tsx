@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Twitter, Linkedin, Link as LinkIcon } from 'lucide-react';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import UIExtras from '@/app/components/UIExtras';
 import ArticleCard from '@/app/components/ArticleCard';
 import TOC from '@/app/components/TOC';
+import ShareButtons from '@/app/components/ShareButtons';
 import { getPostBySlug, getAllPosts } from '@/lib/wp';
 import { mapWPPostToPost } from '@/lib/mapper';
 
@@ -121,14 +121,7 @@ export default async function SingleArticle({ params }: PageProps) {
             {/* Social Share Row Prominent */}
             <div className="mt-12 bg-[var(--mn-cream)] p-10 flex flex-col md:flex-row items-center justify-between gap-8">
                <span className="font-display italic text-xl text-[var(--heading-primary)]">Found this article useful? Share it.</span>
-               <div className="flex gap-4">
-                  <button className="flex items-center gap-2 px-6 py-3 border-2 border-[var(--heading-primary)] text-[var(--heading-primary)] text-[11px] font-bold uppercase tracking-widest hover:bg-[var(--heading-primary)] hover:text-[var(--bg-primary)] transition-all duration-300 group">
-                    <Twitter size={14} /> <span>Twitter</span>
-                  </button>
-                  <button className="flex items-center gap-2 px-6 py-3 border-2 border-[var(--heading-primary)] text-[var(--heading-primary)] text-[11px] font-bold uppercase tracking-widest hover:bg-[var(--heading-primary)] hover:text-[var(--bg-primary)] transition-all duration-300 group">
-                    <Linkedin size={14} /> <span>LinkedIn</span>
-                  </button>
-               </div>
+               <ShareButtons url={`/insights/${slug}`} title={post.title} variant="row" />
             </div>
 
             {/* Author Bio Box */}
@@ -192,17 +185,7 @@ export default async function SingleArticle({ params }: PageProps) {
                 {/* Share Sidebar */}
                 <div>
                    <span className="block text-[10px] uppercase tracking-[2px] text-gray-400 font-bold mb-6">Share Article</span>
-                   <div className="flex gap-3">
-                      <button className="w-9 h-9 border border-[var(--heading-primary)] flex items-center justify-center text-[var(--heading-primary)] hover:bg-[var(--heading-primary)] hover:text-[var(--bg-primary)] transition-all duration-300">
-                         <Twitter size={14} />
-                      </button>
-                      <button className="w-9 h-9 border border-[var(--heading-primary)] flex items-center justify-center text-[var(--heading-primary)] hover:bg-[var(--heading-primary)] hover:text-[var(--bg-primary)] transition-all duration-300">
-                         <Linkedin size={14} />
-                      </button>
-                      <button className="w-9 h-9 border border-[var(--heading-primary)] flex items-center justify-center text-[var(--heading-primary)] hover:bg-[var(--heading-primary)] hover:text-[var(--bg-primary)] transition-all duration-300">
-                         <LinkIcon size={14} />
-                      </button>
-                   </div>
+                   <ShareButtons url={`/insights/${slug}`} title={post.title} variant="sidebar" />
                 </div>
 
                 {/* Related Sidebar */}
