@@ -1,30 +1,8 @@
-
-> mn-legal-web@0.1.0 dev
-> next dev
-
- ⚠ Port 3000 is in use by an unknown process, using available port 3001 instead.
-   ▲ Next.js 15.5.12
-   - Local:        http://localhost:3001
-   - Network:      http://192.168.0.2:3001
-
- ✓ Starting...
- ✓ Ready in 2.9s
- ○ Compiling /insights ...
- ✓ Compiled /insights in 10.1s (741 modules)
- GET /insights 200 in 18304ms
- ○ Compiling /insights/[slug] ...
- ✓ Compiled /insights/[slug] in 1354ms (773 modules)
- GET /insights/mauritius-rising-fintech-payments-hub-africa 200 in 1561ms
- GET /insights/mauritius-rising-fintech-payments-hub-africa 200 in 5609ms
- GET /insights 200 in 610ms
- GET /insights/mauritius-rising-fintech-payments-hub-africa 200 in 193ms
- GET /insights 200 in 360ms
- GET /insights/mauritius-rising-fintech-payments-hub-africa 200 in 235ms
- GET /insights 200 in 467ms
- GET /insights/mauritius-rising-fintech-payments-hub-africa 200 in 331ms
- ✓ Compiled in 7s (780 modules)
- ○ Compiling / ...
- ✓ Compiled / in 1499ms (822 modules)
- GET / 200 in 3419ms
- GET / 200 in 332ms
- GET / 200 in 317ms
+npm error code ENOENT
+npm error syscall open
+npm error path /app/package.json
+npm error errno -2
+npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/app/package.json'
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error A complete log of this run can be found in: /home/jules/.npm/_logs/2026-03-31T04_48_20_123Z-debug-0.log
