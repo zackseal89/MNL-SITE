@@ -47,13 +47,22 @@ export function mapWPPostToPost(wpPost: any): Post {
   // Extract author info safely
   const authorNode = wpPost.author?.node || {};
   const authorName = authorNode.name || 'MN Legal';
-  let authorRole = authorNode.description ? 'Senior Advocate' : 'Advocate';
-  let authorRoleLink = undefined;
 
-  if (authorName === 'Jonathan Baumgart') {
-    authorRole = 'CEO of Atomiq Consulting';
-    authorRoleLink = 'https://atomiqconsulting.com/';
-  }
+  const authorOverrides: Record<string, { role: string; roleLink?: string }> = {
+    'jonathan baumgart': {
+      role: 'CEO of Atomiq Consulting',
+      roleLink: 'https://atomiqconsulting.com/'
+    },
+    'zachary ongeri': {
+      role: 'AI Associate'
+    }
+  };
+
+  const authorNameLower = authorName.toLowerCase();
+  const override = authorOverrides[authorNameLower];
+
+  const authorRole = override ? override.role : (authorNode.description ? 'Senior Advocate' : 'Advocate');
+  const authorRoleLink = override?.roleLink;
 
   const authorAvatar = authorNode.avatar?.url || 'https://via.placeholder.com/150';
   const authorBio = authorNode.description || '';
